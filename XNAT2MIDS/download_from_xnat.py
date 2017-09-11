@@ -26,7 +26,7 @@ dictionary_path=path_programme.path + ".python_objects/"
 # Functions
 ###############################################################################
 
-## This functions allow the user visualize al projects in xnat aplication
+## This functions allows the userto visualize al projects in xnat aplication
 ## NOT IN USE, NEXT UPLOAD
 def catalog_projects():
     project_url = url + "/data/projects?format=csv"
@@ -41,7 +41,7 @@ def catalog_projects():
     list_project.sort()
     print((str(list_project)))
 
-## This function allow the user to download all images from one project
+## This function allows the user to download all images from one project
 def download_from_xnat(project_id, input_xnat, user, password):
     subject_url = url + "/data/projects/" + project_id + "/subjects?format=csv"
     session_dictionary={}
