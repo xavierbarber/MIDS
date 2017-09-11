@@ -102,7 +102,7 @@ password = ""
 
 
 """
-Function that allows the dictionaries to load
+This function allows the user to load dictionaries
 """
 
 
@@ -127,7 +127,7 @@ def load_dictionary():
 
 
 """
-Function allow the programme to convert the xnat directory to
+This function allows the user to convert the xnat directory to
 mids directory
 """
 
@@ -346,7 +346,7 @@ def crear_directorio_MIDS():
 
 
 """
-Funtion to create a table in format ".tsv" whit a information of subject
+This function allows the user to create a table in format ".tsv" whit a information of subject
 """
 
 
