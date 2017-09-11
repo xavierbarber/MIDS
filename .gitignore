@@ -99,3 +99,9 @@ ENV/
 
 # mypy
 .mypy_cache/
+
+# ninja specification
+*.nja
+
+# temp files
+*/.download/
