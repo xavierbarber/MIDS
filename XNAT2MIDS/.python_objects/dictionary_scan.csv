@@ -152,13 +152,13 @@ isoRegDWIHRSENSE,dwi,dwi,
 LOC,anat,T1w,cervicales
 LOC3P,anat,T1w,cervicales
 LUMBARGADO,anat,T1w,lumbar
-MobiView,anat,T1w,cintura pa' rriba
-MobiViewGADOSAG,anat,T1w,cintura pa' rriba
-MobiViewGADOSPIRSAG,anat,T1w,cintura pa' rriba
-MobiViewSTIR_longTE,anat,T1w,cintura pa' rriba
-MobiViewSTIR_TSE,anat,T1w,cintura pa' rriba
-MobiViewT1W_TSE,anat,T1w,cintura pa' rriba
-MobiViewT2W_TSE,anat,T2w,cintura pa' rriba
+MobiView,anat,T1w,torso superior
+MobiViewGADOSAG,anat,T1w,torso superior
+MobiViewGADOSPIRSAG,anat,T1w,torso superior
+MobiViewSTIR_longTE,anat,T1w,torso superior
+MobiViewSTIR_TSE,anat,T1w,torso superior
+MobiViewT1W_TSE,anat,T1w,torso superior
+MobiViewT2W_TSE,anat,T2w,torso superior
 MPROb_Ax_SI_Average_sp10_th10,anat,T1w,
 MPROb_Cor_AP_Average_sp081_th081,anat,T1w,
 MPROb_Sag_RL_Average_sp081_th081,anat,T1w,
