@@ -10,8 +10,12 @@ import json
 # Functions
 ###############################################################################
 
-##This function allow the user to save one tag dicom in an archive json
-def add_tag_dicom(tag, description, value,json_file_path):
+"""
+This function allows the user to save one tag dicom in an archive json
+"""
+
+
+def add_tag_dicom(tag, description, value, json_file_path):
     json_file = load_json(json_file_path)
     for i in range(len(json_file["ResultSet"]["Result"])):
         if json_file["ResultSet"]["Result"][i]["tag1"] == tag:
@@ -22,7 +26,10 @@ def add_tag_dicom(tag, description, value,json_file_path):
     save_json(json_file, json_file_path)
 
 
-##This function allow the user to obtain one tag dicom from an archive json
+"""
+This function allow the user to obtain one tag dicom from an archive json
+"""
+
 def get_tag_dicom(tag, json_file_path):
     json_file = load_json(json_file_path)
     for i in range(len(json_file["ResultSet"]["Result"])):
@@ -33,7 +40,9 @@ def get_tag_dicom(tag, json_file_path):
 
 
 
-## this function allow the user store one object in an archive json
+"""
+This function allow the user store one object in an archive json
+"""
 def save_json(subject, path):
     string_json = json.dumps(subject, default=lambda o: o.__dict__,
          sort_keys=True)
@@ -45,7 +54,9 @@ def save_json(subject, path):
     f.close()
 
 
-## this function allow the user obtain one object from an archive json
+"""
+This function allow the user obtain one object from an archive json
+"""
 def load_json(path):
     f = open(path, "r")
     json_string = f.read()

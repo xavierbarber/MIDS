@@ -10,7 +10,6 @@ import IO_Functions.file_class as file_funtions
 import IO_Functions.io_json as io_json
 import IO_Functions.io_objects as io_objects
 import IO_Functions.file_class as file_funtions
-#import IO_Functions.file_class as file_funtions
 
 
 ###############################################################################
@@ -26,8 +25,11 @@ dictionary_path=path_programme.path + ".python_objects/"
 # Functions
 ###############################################################################
 
-## This functions allows the userto visualize al projects in xnat aplication
-## NOT IN USE, NEXT UPLOAD
+"""
+This functions allows the user to visualize al projects in xnat aplication
+NOT IN USE, NEXT UPLOAD
+"""
+
 def catalog_projects():
     project_url = url + "/data/projects?format=csv"
     out, err = bash.bash_command(
@@ -41,7 +43,11 @@ def catalog_projects():
     list_project.sort()
     print((str(list_project)))
 
-## This function allows the user to download all images from one project
+"""
+This function allows the user to download all images from one project
+"""
+
+
 def download_from_xnat(project_id, input_xnat, user, password):
     subject_url = url + "/data/projects/" + project_id + "/subjects?format=csv"
     session_dictionary={}

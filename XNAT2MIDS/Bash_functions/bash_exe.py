@@ -6,9 +6,14 @@
 import shlex
 import subprocess
 
+###############################################################################
+# Functions
+###############################################################################
 
-## this function aloww the user execute instructions in bash
-## STDOUT y STDERR
+"""
+this function aloww the user execute instructions in bash
+STDOUT y STDERR
+"""
 def bash_command(command_line):
     args = shlex.split(command_line)
     #print ((command_line))

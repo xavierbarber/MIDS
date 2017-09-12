@@ -11,12 +11,12 @@ import fnmatch
 # Classes section
 ###############################################################################
 
-## Class that define a folder o archve with a path
+"""
+Class that define a folder o archve with a path
+"""
 class FileInfo(object):
-
+    ## The fuction __init__ inicialize the object FileInfo
     def __init__(self, filepath):
-
-
         self.is_file = os.path.isfile(filepath)
         self.is_dir = os.path.isdir(filepath)
         self.is_link = os.path.islink(filepath)
@@ -39,20 +39,27 @@ class FileInfo(object):
 
         self.extension = "." + ".".join(filepath.split('.')[1:])
 
+    ## The function match search patterns in the path and return True o False
     def match(self, exp):
         return fnmatch.fnmatch(self.filepath, exp)
 
+    ## the function readfile return the archive content
     def readfile(self):
         if self.is_file:
             with open(self.filepath, 'r') as _file:
                 return _file.read()
 
+    ## The function read_lines_file return the lines where matches are included
     def read_lines_file(self,match):
+        lines=list()
         with open(self.filepath, 'r') as _file:
             for line in _file:
                 if fnmatch.fnmatch(line, match):
-                    return line
+                    lines.append(line)
+        return lines
 
+    ## The fuction __str__ return the characteristics of the object
+    ## at string format
     def __str__(self):
         return str(self.__dict__)
 
@@ -61,8 +68,12 @@ class FileInfo(object):
 # Functions
 ###############################################################################
 
-## this function allow the user to visit directories and files depthly
-## with one given path
+"""
+This function allows the user to visit directories and files depthly
+with one given path
+"""
+
+
 def get_dirs_and_files(root):
     for root, dirs, files in os.walk(root):
         for directory in dirs:
@@ -77,15 +88,23 @@ def get_dirs_and_files(root):
             if os.path.isfile(filename) or os.path.isdir(filename):
                 yield FileInfo(filename)
 
-## this function allow the user to visit only directories depthly
-## with one given path
+"""
+This function allows the user to visit only directories depthly
+with one given path
+"""
+
+
 def get_dirs(root):
     for root, dirs, files in os.walk(root):
         for directory in dirs:
             yield FileInfo(os.path.join(root, directory))
 
-## this function allow the user to visit only files depthly
-## with one given path
+"""
+This function allows the user to visit only files depthly
+with one given path
+"""
+
+
 def get_files(root):
     for root, dirs, files in os.walk(root):
         for directory in dirs:
