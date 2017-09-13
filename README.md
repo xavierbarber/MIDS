@@ -26,7 +26,7 @@ there are 2 funtions in this code:
 
       + Prefix	-p	1) The project name to download
 
-      + Prefix	-i	2) the directfory where the files will be downloaded
+      + Prefix	-i	2) the directory where the files will be downloaded
 
   Convert the xnat directories of the project in MIDS format:
 
@@ -34,7 +34,7 @@ there are 2 funtions in this code:
 
       + Prefix	-p	1)The project name to download
 
-      + Prefix	-i	2) the directfory where the files will be downloaded
+      + Prefix	-i	2) the directory where the files will be downloaded
 
       + Prefix	-o	3) Directory where the MIDS model is applied
 
