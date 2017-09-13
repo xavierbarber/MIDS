@@ -11,6 +11,7 @@ The MIDS has been implemented from another standard called BIDS ([Brain Imaging 
 This sortware allow the user to Download one project into XNAT platform of BIMCV and convert the XNAT directory images in a directory MIDS. The aplication execution need Python --version >= 3.5. 
 
 An example of execution is:
+
 ```sh
 python3.5 main.py -w Project_id -i dirXNAT -o dirOutput 
 ```
