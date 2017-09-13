@@ -34,7 +34,7 @@ along with this program. If not, see <http://www.gnu.org/licenses/gpl-3.0.txt>.
 
 Prerequisites
 
-Python --version >= 3.4
+Python --version >= 3.5
 
 Description:
     This aplication allow the user to download one project on XNAT and
@@ -115,7 +115,7 @@ def load_dictionary():
         exit(0)
     else:
         dictionary_sessions = dict(
-            io_objects.load_pickle(dictionary_path + "diccionary_session.dic"))
+            io_objects.load_pickle(dictionary_path + "dictionary_session.dic"))
     # this dictionary contains all word of scans for classifying all
     # images in MIDS
     if not os.path.exists(dictionary_path + "dictionary_scans.dic"):
@@ -123,7 +123,7 @@ def load_dictionary():
         exit(0)
     else:
         dictionary_scans = dict(
-            io_objects.load_pickle(dictionary_path + "diccionary_scans.dic"))
+            io_objects.load_pickle(dictionary_path + "dictionary_scans.dic"))
 
 
 """
@@ -199,7 +199,8 @@ def crear_directorio_MIDS():
 
 
                         out, err = bash.bash_command("ls " + dicom_json.path + "*nii.gz")
-                        nifti_files = out.decode("utf-8").split('\n')
+                        nifti_files = out.split('\n')
+                        
                         for nifti_file in nifti_files[:-1]:
                             nii_name = subject_name + "_" + num_session +"_acq-"+ str(acq_index) + "_run-" + str(T1w_index) + "_"+modality_label+".nii.gz"
                             bash.bash_command("cp " + nifti_file + " " +new_path_mids + nii_name)
@@ -219,7 +220,7 @@ def crear_directorio_MIDS():
                             bash.bash_command("mkdir -p " + new_path_mids)
                         bash.bash_command("cp " + dicom_json.filepath + " " +new_path_mids + dicom_name)
                         out, err = bash.bash_command("ls " + dicom_json.path + "*nii.gz")
-                        nifti_files = out.decode("utf-8").split('\n')
+                        nifti_files = out.split('\n')
                         for nifti_file in nifti_files[:-1]:
                             nii_name = subject_name + "_" + num_session +"_acq-"+ str(acq_index) + "_run-" + str(T2w_index) + "_"+modality_label+".nii.gz"
                             bash.bash_command("cp " + nifti_file + " " +new_path_mids + nii_name)
@@ -422,9 +423,13 @@ def main():
             project_id = str(arg[i + 1])
         elif arg[i].lower() == "-i":
             opt_i = True
+            if not(os.path.isdir(str(arg[i + 1]))):
+                bash.bash_command("mkdir -p " + str(arg[i + 1]))
             xnat_data_path = file_funtions.FileInfo(str(arg[i + 1]))
         elif arg[i].lower() == "-o":
             opt_o = True
+            if not(os.path.isdir(str(arg[i + 1]))):
+                bash.bash_command("mkdir -p " + str(arg[i + 1]))
             mids_data_path = file_funtions.FileInfo(str(arg[i + 1]))
         else:
             print(("invalid option"))

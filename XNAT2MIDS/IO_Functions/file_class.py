@@ -4,7 +4,7 @@
 # Imports
 ###############################################################################
 import os
-import magic
+#import magic
 import fnmatch
 
 ###############################################################################
@@ -25,12 +25,12 @@ class FileInfo(object):
         else:
             self.depth = filepath.strip('/').count('/')
         self.size = os.path.getsize(filepath)
-        m = magic.open(magic.MAGIC_NONE)
-        m.load()
-        self.meta = m.file(filepath).lower()
-        m = magic.open(magic.MAGIC_MIME)
-        m.load()
-        self.mime = m.file(filepath)
+ #       m = magic.open(magic.MAGIC_NONE)
+ #       m.load()
+ #       self.meta = m.file(filepath).lower()
+ #       m = magic.open(magic.MAGIC_MIME)
+ #       m.load()
+ #       self.mime = m.file(filepath)
         self.filepath = filepath
         self.path = "/".join(filepath.split('/')[0:len(filepath.split(
             '/')) - 1]) + '/'

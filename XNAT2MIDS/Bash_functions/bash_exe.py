@@ -27,5 +27,5 @@ def bash_command(command_line):
         #print("bash command is executed by shell=True")
         proc = subprocess.Popen(command_line, stdout=subprocess.PIPE,
         stderr=subprocess.PIPE, shell=True)
-        out, err = proc.communicate()
+    out, err = proc.communicate()
     return [out.decode('utf-8'), err.decode('utf-8')]
