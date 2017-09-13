@@ -13,11 +13,10 @@ This sortware allow the user to Download one project into XNAT platform of BIMCV
 An example of execution is:
 
 ```sh
-python3.5 main.py -w Project_id -i dirXNAT -o dirOutput 
+python3.5 main.py -w Project_id -i dirXNAT -o dirOutput
 ```
 
-
-###Options
+### Options
 
 there are 2 funtions in this code:
 
@@ -39,6 +38,6 @@ there are 2 funtions in this code:
 
       + Prefix	-o	3) Directory where the MIDS model is applied
 
-#references
+# references
 
 [1] Gorgolewski, K. J., Auer, T., Calhoun, V. D., Craddock, R. C., Das, S., Duff, E. P., ... & Handwerker, D. A. (2016). The brain imaging data structure, a format for organizing and describing outputs of neuroimaging experiments. Scientific Data, 3, 160044.
