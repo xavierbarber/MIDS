@@ -8,11 +8,11 @@ Centro de Excelencia e Innovación Tecnológica de Bioimagen de la Conselleria d
 
 http://ceib.san.gva.es/
 
-María de la Iglesia Vayá -> delaiglesia_mar@gva.es or miiglesia@cipf.es
-
-Jhon Jairo Saenz Gamboa ->jsaenz@cipf.es
+María de la Iglesia Vayá -> delaiglesia_mar@gva.es or miglesia@cipf.es
 
 Jose Manuel Saborit Torres -> jmsaborit@cipf.es
+
+Jhon Jairo Saenz Gamboa ->jsaenz@cipf.es
 
 Joaquim Ángel Montell Serrano -> jamontell@cipf.es
 
