@@ -14,17 +14,33 @@ import fnmatch
 """
 Class that define a folder o archve with a path
 """
+
+
 class FileInfo(object):
     ## The fuction __init__ inicialize the object FileInfo
     def __init__(self, filepath):
+
+        # "is_file" is a bolean variable that describe if the path
+        # is a file or not
         self.is_file = os.path.isfile(filepath)
+
+        # "is_dir" is a bolean variable that describe if the path
+        # is a directory or not
         self.is_dir = os.path.isdir(filepath)
+
+        # "is_link" is a bolean variable that describe if the path
+        # is a link or not
         self.is_link = os.path.islink(filepath)
+        # "depth" is a integer variable that describe the depth of a path
         if self.is_dir:
+            # if is a directory, the same directory is counted
             self.depth = filepath.strip('/').count('/') + 1
         else:
             self.depth = filepath.strip('/').count('/')
+        # "size" is a integer variable that describe the size of a arichive
+        # or directory in bytes
         self.size = os.path.getsize(filepath)
+        #
         m = magic.open(magic.MAGIC_NONE)
         m.load()
         self.meta = m.file(filepath).lower()
