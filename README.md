@@ -1,9 +1,3 @@
----
-title: "MIDS - Medical Imaging Data Structure"
-date: "Aug 2017"
-author: "BIMCV"
-bibliography: references.bib
----
 # MIDS - Medical Imaging Data Structure
 
 Currently, distinc forms to store images and medical information exist, but there is not a standard that indicates how this information should be organized and shared. The BIMCV idea is to use a simple organisation that any researcher can understand the distribution of data.
@@ -25,23 +19,23 @@ python3.5 main.py -w "Project_id" -i "dirXNAT" -o "dirOutput"
 
 there are 2 funtions in this code:
 
-> Download one project from xnat aplicatión:
+  Download one project from xnat aplicatión:
 
->> arguments:
+     arguments:
 
->>> Prefix	-p	1) The project name to download
+      + Prefix	-p	1) The project name to download
 
->>> Prefix	-i	2) the directfory where the files will be downloaded
+      + Prefix	-i	2) the directfory where the files will be downloaded
 
->>> Convert the xnat directories of the project in MIDS format:
+  Convert the xnat directories of the project in MIDS format:
 
->>arguments:
+    arguments:
 
->>> Prefix	-p	1)The project name to download
+      + Prefix	-p	1)The project name to download
 
->>> Prefix	-i	2) the directfory where the files will be downloaded
+      + Prefix	-i	2) the directfory where the files will be downloaded
 
->>> Prefix	-o	3) Directory where the MIDS model is applied
+      + Prefix	-o	3) Directory where the MIDS model is applied
 
 #references
 
