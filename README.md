@@ -12,9 +12,8 @@ This sortware allow the user to Download one project into XNAT platform of BIMCV
 
 an example of execution is:
 
-'''sh
-python3.5 main.py -w "Project_id" -i "dirXNAT" -o "dirOutput"
-'''
+> python3.5 main.py -w "Project_id" -i "dirXNAT" -o "dirOutput"
+
 ###Options
 
 there are 2 funtions in this code:
