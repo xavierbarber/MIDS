@@ -10,7 +10,6 @@ import Bash_functions.bash_exe as bash
 import IO_Functions.file_class as file_funtions
 import IO_Functions.io_json as io_json
 import IO_Functions.io_objects as io_objects
-import IO_Functions.file_class as file_funtions
 
 
 ###############################################################################
@@ -21,10 +20,26 @@ path_programme = file_funtions.FileInfo(os.path.realpath(__file__))
 download_path = path_programme.path + ".download/"
 dictionary_path=path_programme.path + ".python_objects/"
 
-
+dictionary_sessions = dict()
 ###############################################################################
 # Functions
 ###############################################################################
+
+"""
+This function allows the user to load dictionaries
+"""
+
+
+def load_dictionary():
+    # this dictinary contains information that is not included
+    # in the dicom header
+    global dictionary_sessions, dictionary_scans
+    if not os.path.exists(dictionary_path + "dictionary_session.dic"):
+        print(('no existe diccionario'))
+    else:
+        dictionary_sessions = dict(
+            io_objects.load_pickle(dictionary_path + "dictionary_session.dic"))
+
 
 """
 This functions allows the user to visualize al projects in xnat aplication
@@ -50,6 +65,7 @@ This function allows the user to download all images from one project
 
 
 def download_from_xnat(project_id, input_xnat, user, password):
+    load_dictionary()
     subject_url = url + "/data/projects/" + project_id + "/subjects?format=csv"
     session_dictionary={}
     if os.path.isfile(dictionary_path + "diccionary_session.dic"):
@@ -111,7 +127,7 @@ def download_from_xnat(project_id, input_xnat, user, password):
                                             + ", " + str(number_scan) + ", " + str(frames_scan)
                                             + ", " + position_scan + ", " + str(is_nifti) + ', ' + subject_id))
                                             dictionary_scans[number_scan]=[frames_scan, position_scan]
-                        session_dictionary[project_id
+                        session_dictionary[group_id.split('_')[1]
                             + "-" + accession_number] = (
                                 [
                                     group_id, dictionary_scans, project_real_id
