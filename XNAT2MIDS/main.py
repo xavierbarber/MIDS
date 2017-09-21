@@ -411,6 +411,63 @@ def crear_participants_tsv():
             with open (projects.filepath+os.sep+"participants.tsv",'+w') as csv_input:
                 csv_input.write(csv_file)
 
+
+def create_scans_tsv():
+    global dictionary_sessions
+    for sessions in file_funtions.get_dirs(mids_data_path.filepath):
+        if "ses-" in sessions.filename:
+            tags_list = [
+                "(0008,0070)", "(0008,103E)", "(0008,1090)", "(0010,0020)",
+                "(0010,0040)", "(0010,1010)", "(0010,1030)", "(0018,0020)",
+                "(0018,0021)", "(0018,0022)", "(0018,0023)", "(0018,0050)",
+                "(0018,0080)", "(0018,0081)", "(0018,0082)", "(0018,0084)",
+                "(0018,0087)", "(0008,1090)", "(0018,0088)", "(0018,0091)",
+                "(0018,0093)", "(0018,0095)", "(0018,1314)", "(0018,5100)",
+                "(0020,0032)", "(0020,0037)", "(0020,1040)", "(0020,1041)",
+                "(0028,0010)", "(0028,0011)", "(0028,0030)", "(0028,0100)",
+                "(0018,0083)", "(0018,0086)"
+                 ]
+            tsv_cab_list = ["filename","slides","plane"] + tags_list
+            tsv = ""
+            subject = sessions.filepath.split(os.sep)[-2]
+            session = sessions.filename
+            for dicom in file_funtions.get_files(sessions.filepath):
+                if ".json" in dicom.filename + dicom.extension:
+                    print(dicom.filepath)
+                    accession = (io_json.get_tag_dicom("(0008,0050)",dicom.filepath)["value"])
+                    project = (io_json.get_tag_dicom("(0008,1030)",dicom.filepath)["value"])
+                    name_scan = (io_json.get_tag_dicom("(0008,103E)",dicom.filepath)["value"])
+                    slides, plane = None,None
+                    try:
+                        slides = dictionary_sessions[project + '-' + accession][1][name_scan][0]
+                    except KeyError:
+                        pass
+                    try:
+                        plane = dictionary_sessions[project + '-' + accession][1][name_scan][1]
+                    except KeyError:
+                        pass
+                    tsv_list = [None] * len(tags_list)
+                    for tag_iter in range(len(tags_list)):
+                        if io_json.get_tag_dicom(tags_list[tag_iter],dicom.filepath):
+                            if tsv_cab_list[tag_iter + 3]==tags_list[tag_iter]:
+                                tsv_cab_list[tag_iter + 3] = (io_json.get_tag_dicom(tags_list[tag_iter],dicom.filepath)["desc"]
+                                + ' ' + tags_list[tag_iter])
+                            tsv_list[tag_iter]=(io_json.get_tag_dicom(tags_list[tag_iter],dicom.filepath)["value"])
+                        else:
+                            tsv_list[tag_iter]=None
+                    nifti_pattern=dicom.filename[dicom.filename.find("_run"):]+ ".nii.gz"
+                    nifti_list=[]
+                    print((nifti_pattern))
+                    for nifti in file_funtions.get_files(dicom.path):
+                        if nifti_pattern in nifti.filename + nifti.extension:
+                            print(nifti.filename + nifti.extension)
+                            nifti_list.append("/".join(nifti.filepath.split("/")[-2:]))
+                    tsv+=( ",".join(nifti_list) + '\t' + str(slides) + '\t'
+                    + str(plane) + '\t' + '\t'.join([(str(x)) for x in tsv_list])+'\n')
+            with open (sessions.filepath+ os.sep + subject + "_" + session + "_scans.tsv",'+w') as tsv_input:
+                tsv_input.write('\t'.join([str(x) for x in tsv_cab_list]) + '\n')
+                tsv_input.write(tsv)
+
 """
 This Fuction is de main programme
 """
@@ -426,6 +483,7 @@ def main():
     opt_w = False
     opt_i = False
     opt_o = False
+    opt_l = False
 
     # Contropl of arguments of programme
     if len(sys.argv) < 2:
@@ -451,7 +509,8 @@ def main():
             if not(os.path.isdir(str(arg[i + 1]))):
                 bash.bash_command("mkdir -p " + str(arg[i + 1]))
             mids_data_path = file_funtions.FileInfo(str(arg[i + 1]))
-
+        elif arg[i].lower() == "-l" or arg[i].lower() == "--list":
+            opt_l=True
         elif arg[i].lower() == "-c" or arg[i].lower() == "--csv":
             io_objects.save_pickle(
                 io_objects.csv_2_dict(
@@ -474,13 +533,14 @@ def main():
             exit(0)
 
     #Depends of the option, any funtions are activated
-    if opt_w and opt_i:
+    if (opt_w or opt_l) and opt_i:
         print(("Download dataset: " + project_id))
         time.sleep(2)
         #the user and password is asked
         user = input('User of XNAT: ')
         password = getpass.getpass("Password of XNAT: ")
-        #dfx.catalog_projects()
+        if opt_l:
+            project_id = dfx.catalog_projects(user, password)
         dfx.download_from_xnat(
             project_id, xnat_data_path.filepath, user, password
             )
@@ -489,8 +549,9 @@ def main():
         print(("MIDS are generating..."))
         time.sleep(2)
         load_dictionary()
-        crear_directorio_MIDS()
-        crear_participants_tsv()
+        #crear_directorio_MIDS()
+        #crear_participants_tsv()
+        create_scans_tsv()
 
     exit(0)
 

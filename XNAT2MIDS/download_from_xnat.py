@@ -39,14 +39,18 @@ def load_dictionary():
     else:
         dictionary_sessions = dict(
             io_objects.load_pickle(dictionary_path + "dictionary_session.dic"))
-
-
+    #io_objects.save_pickle(session_dictionary,dictionary_path + "dictionary_session.dic")
+    #if not os.path.exists(dictionary_path + "name_scan_frequency.dic"):
+        #print(('no existe diccionario'))
+    #else:
+        #dictionary_sessions = dict(
+            #io_objects.load_pickle(dictionary_path + "dictionary_session.dic"))
 """
 This functions allows the user to visualize al projects in xnat aplication
 NOT IN USE, NEXT UPLOAD
 """
 
-def catalog_projects():
+def catalog_projects(user, password):
     project_url = url + "/data/projects?format=csv"
     out, err = bash.bash_command(
         "curl --insecure --user " + user +":" + password + " " + project_url
@@ -54,11 +58,30 @@ def catalog_projects():
     csv_list = out.split('\n')
     list_project=[]
     for i in range(1,len(csv_list)-1):
-        print((csv_list[i].split(',')[0]))
         list_project.append(csv_list[i].split(',')[0])
     list_project.sort()
-    print((str(list_project)))
-
+    loop=True
+    while loop:
+        for i in range(len(list_project)):
+            if not i % 5:
+                print((""))
+            string = str(i+1) + ") " + list_project[i]
+            print("{0:20s}".format(string), end="", flush=True)
+        answer=input("\nChosee the project: ")
+        if answer.isdigit():
+            answer=int(answer)-1
+            if answer >= len(list_project):
+                print(("the number is not corrected, try again"))
+                continue
+            else:
+                answer=list_project[answer]
+        else:
+            if not (answer in list_project):
+                print(("the proyect is not corrected, try again"))
+                continue
+        loop=False
+    return answer
+    #import pdb; pdb.set_trace()
 """
 This function allows the user to download all images from one project
 """
@@ -68,6 +91,7 @@ def download_from_xnat(project_id, input_xnat, user, password):
     load_dictionary()
     subject_url = url + "/data/projects/" + project_id + "/subjects?format=csv"
     session_dictionary={}
+    scans_frequency={}
     if os.path.isfile(dictionary_path + "diccionary_session.dic"):
         session_dictionary = io_objects.load_pickle(dictionary_path + "diccionary_session.dic")
     if not os.path.isdir(download_path):
@@ -105,7 +129,7 @@ def download_from_xnat(project_id, input_xnat, user, password):
                     for experiments_pos in range(len(tp[type_pos]["items"])):
                         accession_number = (tp[type_pos]["items"][experiments_pos]
                             ["data_fields"]["ID"])
-                        project_real_id = tp[type_pos]["items"][experiments_pos]["data_fields"]["project"]
+                        #project_real_id = tp[type_pos]["items"][experiments_pos]["data_fields"]["project"]
                         ssp=tp[type_pos]["items"][experiments_pos]["children"]
                         for scans_pos in range(len(ssp)):
                             if ssp[scans_pos]["field"] == "scans/scan":
@@ -115,6 +139,8 @@ def download_from_xnat(project_id, input_xnat, user, password):
                                     #print((sp[scan_pos]))
                                     number_scan = sp[scan_pos]["data_fields"]["ID"]
                                     frames_scan = sp[scan_pos]["data_fields"]["frames"]
+                                    name_scan = sp[scan_pos]["data_fields"]["type"]
+                                    scans_frequency[name_scan]= scans_frequency.get(name_scan, 0) + 1
                                     position_scan = (sp[scan_pos]
                                         ["data_fields"].get("parameters/orientation", ""))
                                     fp = sp[scan_pos]["children"][0]["items"]
@@ -125,12 +151,12 @@ def download_from_xnat(project_id, input_xnat, user, password):
                                             is_nifti = True
                                             print((group_id + ", " + accession_number
                                             + ", " + str(number_scan) + ", " + str(frames_scan)
-                                            + ", " + position_scan + ", " + str(is_nifti) + ', ' + subject_id))
-                                            dictionary_scans[number_scan]=[frames_scan, position_scan]
+                                            + ", " + position_scan + ", " + str(is_nifti) + ', ' + name_scan))
+                                            dictionary_scans[name_scan]=[frames_scan, position_scan]
                         session_dictionary[group_id.split('_')[1]
                             + "-" + accession_number] = (
                                 [
-                                    group_id, dictionary_scans, project_real_id
+                                    group_id, dictionary_scans#, project_real_id
                                 ]
                             )
     for item, value in session_dictionary.items():
@@ -155,13 +181,21 @@ def download_from_xnat(project_id, input_xnat, user, password):
             print ((err))
             file_=file_funtions.FileInfo(rename_path[:-7]+".json")
             if file_.size < 100:
-                #print("Error: dicom Header Void")
-                #print("write exit or continue")
+                print("Error: dicom Header Void")
+                print("write exit or continue")
                 import pdb
                 pdb.set_trace()
+            scan = file_.filepath.split(os.sep)[-5]
             io_json.add_tag_dicom("(0008,0050)","Accesion Number",item.split('-')[1],file_.filepath)
+            io_json.add_tag_dicom("(0008,103E)","Series Description",item_scan,file_.filepath)
             out, err = bash.bash_command("cp -r -d -f "+ download_path + value[0].split('_')[1] + ' ' + input_xnat)
             out, err = bash.bash_command("rm -r -d " + download_path +u'*')
             #bash.print_out_err("rm -r -d " + download_path +'*', out, err)
             #print ((err))
+    io_objects.save_pickle(scans_frequency,dictionary_path + project_id +"name_scan_frequency.dic")
+    csv="name_scans, frequency\n"
+    for k,v in scans_frequency.items():
+        csv+= k +',' + str(v) + '\n'
+    with open(dictionary_path + project_id + "_name_scan_frequency.csv", '+w') as csv_file:
+        csv_file.write(csv)
     io_objects.save_pickle(session_dictionary,dictionary_path + "dictionary_session.dic")

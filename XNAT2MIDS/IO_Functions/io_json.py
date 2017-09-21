@@ -28,6 +28,9 @@ def add_tag_dicom(tag, description, value, json_file_path):
 
 """
 This function allow the user to obtain one tag dicom from an archive json
+
+
+Return a dict of the tag dicom
 """
 
 def get_tag_dicom(tag, json_file_path):
@@ -56,6 +59,8 @@ def save_json(subject, path):
 
 """
 This function allow the user obtain one object from an archive json
+
+Return the struct dict json
 """
 def load_json(path):
     f = open(path, "r")

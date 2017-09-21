@@ -12,6 +12,8 @@ import pickle as pickle
 
 """
 This function allow the user to load any object python into the programme
+
+Return the object python
 """
 
 
@@ -34,6 +36,8 @@ def save_pickle(data, filepath):
 """
 This fuction allow the user convert a csv file into object python dict.
 the id of the table is found in the first column
+
+Return a dict()
 """
 
 
