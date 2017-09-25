@@ -483,11 +483,53 @@ def main():
     global dictionary_scans
 
     # Contropl of arguments of programme
-    parser = argparse.ArgumentParser()
-    parser.add_argument('-c','--csv', action="store_true", default=False, help='foo help')
-    parser.add_argument('-i ', '--input',type=str, help='foo help')
-    parser.add_argument('-o ', '--output', type=str, help='foo help')
-    parser.add_argument('-p ', '--project', nargs='?', default ="", type=str, help='foo help')
+    parser = argparse.ArgumentParser(
+        formatter_class=argparse.RawDescriptionHelpFormatter, description="""
+This sorfware allow the user to Download one project into XNAT platform
+of BIMCV and convert the XNAT directory images in a MIDS directory.
+
+The aplication execution need Python --version >= 3.5.
+
+there are 3 funtions in this code:
+
+  Download one project from xnat aplicatión:
+
+     arguments:
+
+      + Prefix    -p --project [PROJECT]    1) The project name to download,
+                                            if the project is omitted, the
+                                            aplication show all projects in
+                                            xnat to choice
+
+      + Prefix    -i --input INPUT          2) the directory where the
+                                            files will be downloaded
+
+  Update the dictionary of scans, it is use to clasificate any medical
+  image in MIDS structure:
+
+      + Prefix    -c --csv                  Scans dictionary is uploaded when
+                                            this flag is appeared
+
+  Convert the xnat directories of the project in MIDS format:
+
+    arguments:
+
+      + Prefix    -i --input INPUT          1) the directory where the files
+                                            will be downloaded
+
+      + Prefix    -o --output OUTPUT        2) Directory where the MIDS model
+                                            is applied
+    """
+    )
+    parser.add_argument('-c','--csv', action="store_true", default=False,
+    help='Scans dictionary is uploaded when this flag is appeared')
+    parser.add_argument('-i ', '--input',type=str,
+    help='the directory where the files will be downloaded')
+    parser.add_argument('-o ', '--output', type=str,
+    help='Directory where the MIDS model is applied')
+    parser.add_argument('-p ', '--project', nargs='?', default ="", type=str,
+    help="""The project name to download, if the project is omitted,
+    the aplication show all projects in xnat to choice""")
     args = parser.parse_args()
 
     ##Depends of the option, any funtions are activated
