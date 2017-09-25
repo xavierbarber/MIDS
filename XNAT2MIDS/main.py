@@ -65,6 +65,7 @@ import os
 import time
 import sys
 import getpass
+import argparse
 
 import Bash_functions.bash_exe as bash
 import IO_Functions.file_class as file_funtions
@@ -105,12 +106,11 @@ password = ""
 ###############################################################################
 
 
-"""
-This function allows the user to load dictionaries
-"""
-
-
 def load_dictionary():
+    """
+    This function allows the user to load dictionaries
+    """
+
     # this dictinary contains information that is not included
     # in the dicom header
     global dictionary_sessions, dictionary_scans
@@ -130,13 +130,12 @@ def load_dictionary():
             io_objects.load_pickle(dictionary_path + "dictionary_scans.dic"))
 
 
-"""
-This function allows the user to convert the xnat directory to
-mids directory
-"""
-
-
 def crear_directorio_MIDS():
+    """
+    This function allows the user to convert the xnat directory to
+    mids directory
+    """
+
     global dictionary_sessions, dictionary_scans
     depth_path_xnat = xnat_data_path.depth + 3
     for sessions_xnat in file_funtions.get_dirs(xnat_data_path.filepath):
@@ -374,13 +373,15 @@ def crear_directorio_MIDS():
 
 
 
-"""
-This function allows the user to create a table in format ".tsv"
-whit a information of subject
-"""
+
 
 
 def crear_participants_tsv():
+    """
+    This function allows the user to create a table in format ".tsv"
+    whit a information of subject
+    """
+
     global dictionary_sessions, dictionary_scans
     depth_path_ceib = mids_data_path.depth + 1
     for projects in file_funtions.get_dirs(mids_data_path.filepath):
@@ -468,90 +469,52 @@ def create_scans_tsv():
                 tsv_input.write('\t'.join([str(x) for x in tsv_cab_list]) + '\n')
                 tsv_input.write(tsv)
 
-"""
-This Fuction is de main programme
-"""
+
 
 
 def main():
+    """
+    This Fuction is de main programme
+    """
 
     ## global variables declaration
     global project_id, path_csv, xnat_data_path, mids_data_path
     global user, password, path_programme, dictionary_sessions
     global dictionary_scans
 
-    opt_w = False
-    opt_i = False
-    opt_o = False
-    opt_l = False
-
     # Contropl of arguments of programme
-    if len(sys.argv) < 2:
+    parser = argparse.ArgumentParser()
+    parser.add_argument('-c','--csv', action="store_true", default=False, help='foo help')
+    parser.add_argument('-i ', '--input',type=str, help='foo help')
+    parser.add_argument('-o ', '--output', type=str, help='foo help')
+    parser.add_argument('-p ', '--project', nargs='?', default ="", type=str, help='foo help')
+    args = parser.parse_args()
 
-        exit(0)
-
-    # the arguments are obtained
-    arg = sys.argv[1:len(sys.argv)]
-    for i in range(0, len(arg), 2):
-        if '-' not in arg[i]:
-            print (("Error of number of parametres"))
-            exit(0)
-        if arg[i].lower() == "-p" or arg[i].lower() == "--project":
-            opt_w = True
-            project_id = str(arg[i + 1])
-        elif arg[i].lower() == "-i" or arg[i].lower() == "--input":
-            opt_i = True
-            if not(os.path.isdir(str(arg[i + 1]))):
-                bash.bash_command("mkdir -p " + str(arg[i + 1]))
-            xnat_data_path = file_funtions.FileInfo(str(arg[i + 1]))
-        elif arg[i].lower() == "-o" or arg[i].lower() == "--output":
-            opt_o = True
-            if not(os.path.isdir(str(arg[i + 1]))):
-                bash.bash_command("mkdir -p " + str(arg[i + 1]))
-            mids_data_path = file_funtions.FileInfo(str(arg[i + 1]))
-        elif arg[i].lower() == "-l" or arg[i].lower() == "--list":
-            opt_l=True
-        elif arg[i].lower() == "-c" or arg[i].lower() == "--csv":
-            io_objects.save_pickle(
-                io_objects.csv_2_dict(
-                    dictionary_path + "dictionary_scan.csv"
-                ), dictionary_path + "dictionary_scans.dic"
-            )
-        else:
-            print(("invalid option"))
-
-            print (("this programme needs at least a group of parametres\n"
-                + " to execute:"))
-
-            print (("""    dowload  images of a one project
-                --> -p \"project_id\" -i \"dir_xnat\""""))
-
-            print (("""    create directory MIDS
-                --> -p \"project_id\" -i \"dir_xnat\" -o \"dir_CEIB\""""))
-
-            print((path_programme.path))
-            exit(0)
-
-    #Depends of the option, any funtions are activated
-    if (opt_w or opt_l) and opt_i:
-        print(("Download dataset: " + project_id))
-        time.sleep(2)
-        #the user and password is asked
+    ##Depends of the option, any funtions are activated
+    if not args.project is "" and args.input:
         user = input('User of XNAT: ')
         password = getpass.getpass("Password of XNAT: ")
-        if opt_l:
+        xnat_data_path=args.input
+        if args.project:
+            project_id = args.project
+        else:
             project_id = dfx.catalog_projects(user, password)
         dfx.download_from_xnat(
             project_id, xnat_data_path.filepath, user, password
             )
-
-    if opt_i and opt_o:
+    if args.csv:
+        io_objects.csv_2_dict()
+    if args.input and args.output:
+        xnat_data_path = args.input
+        mids_data_path = args.output
         print(("MIDS are generating..."))
         time.sleep(2)
         load_dictionary()
-        #crear_directorio_MIDS()
-        #crear_participants_tsv()
+        crear_directorio_MIDS()
+        crear_participants_tsv()
         create_scans_tsv()
+
+
 
     exit(0)
 
