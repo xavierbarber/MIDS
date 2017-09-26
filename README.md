@@ -24,7 +24,7 @@ there are 3 funtions in this code:
 
      arguments:
 
-      + Prefix	-p --project [PROJECT]	1) The project name to download, if the project is omitted, the aplication show all projects in xnat to choice
+      + Prefix	-p --project [PROJECT]	    1) The project name to download, if the project is omitted, the aplication show all projects in xnat to choice
 
       + Prefix	-i --input INPUT   	    2) the directory where the files will be downloaded
   
