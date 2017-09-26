@@ -2,9 +2,9 @@
 
 Currently, distinc forms to store images and medical information exist, but there is not a standard that indicates how this information should be organized and shared. The BIMCV idea is to use a simple organisation that any researcher can understand the distribution of data.
 
-This desing is called MIDS (Medical Imaging Data Structure). MIDS is a new standar that contains every type of medical information and images in simple hierarchy folders. This is born as an extension of the standard BIDS (Brain Imaging Data Structure). BIDS is a structure that collect medical brain images, but MIDS pretend to extend it far away and not limit it the use to medical brain images. the idea is to create the same structure with both brain, column images or torso,... whether Resonance magnetic, Computed tomography, ecography,... This structure will definitely follow the same process regardless of the type and shape of the image. 
+This desing is called MIDS (Medical Imaging Data Structure). MIDS is a new standar that contains every type of medical information and images in simple hierarchy folders. This is born as an extension of the standard BIDS ([Brain Imaging Data Structure](http://bids.neuroimaging.io/),[1]). BIDS is a structure that collect medical brain images, but MIDS pretend to extend it far away and not limit it the use to medical brain images. the idea is to create the same structure with both brain, column images or torso,... whether Resonance magnetic, Computed tomography, ecography,... This structure will definitely follow the same process regardless of the type and shape of the image. 
 
-The MIDS has been implemented from another standard called BIDS ([Brain Imaging Data Structure](http://bids.neuroimaging.io/),[1]). MIDS gathers the essence of BIDS in terms of structure and naming but it is only defined in the case of brain images. MIDS aims to extend other anatomical parts following the same clear and easy structure of the BIDS
+In conclusion, MIDS gathers the essence of BIDS in terms of structure and naming but it is only defined in the case of brain images. MIDS aims to extend other anatomical parts following the same clear and easy structure of the BIDS
 
 # Aplications
 ## XNAT2MIDS
