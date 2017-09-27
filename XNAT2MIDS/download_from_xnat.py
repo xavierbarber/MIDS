@@ -152,7 +152,7 @@ def download_from_xnat(project_id, input_xnat, user, password):
                                             print((group_id + ", " + accession_number
                                             + ", " + str(number_scan) + ", " + str(frames_scan)
                                             + ", " + position_scan + ", " + str(is_nifti) + ', ' + name_scan))
-                                            dictionary_scans[name_scan]=[frames_scan, position_scan]
+                                            dictionary_scans[name_scan]=[number_scan, frames_scan, position_scan]
                         session_dictionary[group_id.split('_')[1]
                             + "-" + accession_number] = (
                                 [
@@ -173,8 +173,8 @@ def download_from_xnat(project_id, input_xnat, user, password):
             rename_path = out.split('\n')[0]
             #ut, err = bash.bash_command("mv " + out.split('\n')[0] +' '+ rename_path)
             dicom_url = ("https://ceib.cipf.es/xnat/REST/services/dicomdump?src="
-                + "/archive/projects/" + value[2] + "/experiments/"
-                + item.split('-')[1] + "/scans/" + item_scan
+                + "/archive/projects/" + item.split('-')[0]  + "/experiments/"
+                + item.split('-')[1] + "/scans/" + value_scan[0]
                 + "&format=json")
             out, err = bash.bash_command("wget --user=" + user +" --password=" + password + " --auth-no-challenge --no-check-certificate -O " + rename_path[:-7]+".json" + " " + dicom_url)
             #bash.print_out_err("wget", out, err)

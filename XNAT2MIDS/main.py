@@ -542,13 +542,13 @@ there are 3 funtions in this code:
         else:
             project_id = dfx.catalog_projects(user, password)
         dfx.download_from_xnat(
-            project_id, xnat_data_path.filepath, user, password
+            project_id, xnat_data_path, user, password
             )
     if args.csv:
         io_objects.csv_2_dict()
     if args.input and args.output:
-        xnat_data_path = args.input
-        mids_data_path = args.output
+        xnat_data_path = io_objects.FileInfo(args.input)
+        mids_data_path = io_objects.FileInfo(args.output)
         print(("MIDS are generating..."))
         time.sleep(2)
         load_dictionary()
