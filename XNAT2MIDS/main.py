@@ -66,13 +66,13 @@ import time
 import sys
 import getpass
 import argparse
-
+from datetime import datetime
+from calendar import isleap
 import Bash_functions.bash_exe as bash
 import IO_Functions.file_class as file_funtions
 import IO_Functions.io_json as io_json
 import IO_Functions.io_objects as io_objects
 import download_from_xnat as dfx
-
 ###############################################################################
 # Global Variables
 ###############################################################################
@@ -130,7 +130,7 @@ def load_dictionary():
             io_objects.load_pickle(dictionary_path + "dictionary_scans.dic"))
 
 
-def crear_directorio_MIDS():
+def create_directorio_MIDS():
     """
     This function allows the user to convert the xnat directory to
     mids directory
@@ -376,7 +376,7 @@ def crear_directorio_MIDS():
 
 
 
-def crear_participants_tsv():
+def create_participants_tsv():
     """
     This function allows the user to create a table in format ".tsv"
     whit a information of subject
@@ -389,12 +389,13 @@ def crear_participants_tsv():
             department_path = projects.filename
             csv_file="participant_id\tage\tgender\tcontrol\n"
             print ((projects.filepath))
-            list_age=list([float("inf")])
-            sex='U'
-            accession=''
-            control_group=0
+
             for subjects in file_funtions.get_dirs(projects.filepath + os.sep):
                 if "sub-" in subjects.filename:
+                    list_age=list([float("inf")])
+                    sex='U'
+                    accession=''
+                    control_group=0
                     #print((subjects.filename))
                     for json_files in file_funtions.get_files(subjects.filepath + os.sep):
                         if ".json" in json_files.filename + json_files.extension:
@@ -404,8 +405,18 @@ def crear_participants_tsv():
                             try:
                                 list_age.append(int(io_json.get_tag_dicom("(0010,1010)",json_files.filepath)["value"][:-1]))
                             except TypeError:
-                                #print("No hay edad: " + json_files.filepath)
-                                pass
+                                print("No hay edad: " + json_files.filepath)
+                                birtday = (io_json.get_tag_dicom("(0010,0030)",json_files.filepath)["value"])
+                                study_date = (io_json.get_tag_dicom("(0008,0020)",json_files.filepath)["value"])
+                                birtday_list=[int(birtday[0:4]),int(birtday[4:6]),int(birtday[-2:])]
+                                study_list=[int(study_date[0:4]),int(study_date[4:6]),int(study_date[-2:])]
+                                start_date = datetime(birtday_list[0],birtday_list[1],birtday_list[2],12,33)
+                                end_date = datetime(study_list[0],study_list[1],study_list[2],12,33)
+                                diffyears = end_date.year - start_date.year
+                                difference  = end_date - start_date.replace(end_date.year)
+                                days_in_year = isleap(end_date.year) and 366 or 365
+                                difference_in_years = diffyears + (difference.days + difference.seconds/86400.0)/days_in_year
+                                list_age.append(int(difference_in_years))
                             if sex == "U":
                                 sex = (io_json.get_tag_dicom("(0010,0040)",json_files.filepath)["value"])
                     csv_file += subjects.filename+'\t'+str(min(list_age))+'\t'+sex+'\t'+str(control_group)+'\n'
@@ -426,7 +437,7 @@ def create_scans_tsv():
                 "(0018,0093)", "(0018,0095)", "(0018,1314)", "(0018,5100)",
                 "(0020,0032)", "(0020,0037)", "(0020,1040)", "(0020,1041)",
                 "(0028,0010)", "(0028,0011)", "(0028,0030)", "(0028,0100)",
-                "(0018,0083)", "(0018,0086)"
+                "(0018,0083)", "(0018,0086)", "(0018,9461)"
                  ]
             tsv_cab_list = ["filename","slides","plane"] + tags_list
             tsv = ""
@@ -547,13 +558,13 @@ there are 3 funtions in this code:
     if args.csv:
         io_objects.csv_2_dict()
     if args.input and args.output:
-        xnat_data_path = io_objects.FileInfo(args.input)
-        mids_data_path = io_objects.FileInfo(args.output)
+        xnat_data_path = file_funtions.FileInfo(args.input)
+        mids_data_path = file_funtions.FileInfo(args.output)
         print(("MIDS are generating..."))
         time.sleep(2)
         load_dictionary()
-        crear_directorio_MIDS()
-        crear_participants_tsv()
+        create_directorio_MIDS()
+        create_participants_tsv()
         create_scans_tsv()
 
 
