@@ -19,7 +19,6 @@ url = "https://ceib.cipf.es/xnat"
 path_programme = file_funtions.FileInfo(os.path.realpath(__file__))
 download_path = path_programme.path + ".download/"
 dictionary_path=path_programme.path + ".python_objects/"
-
 dictionary_sessions = dict()
 ###############################################################################
 # Functions
@@ -62,35 +61,49 @@ def catalog_projects(user, password):
     list_project.sort()
     loop=True
     while loop:
+        answer_list=[]
         for i in range(len(list_project)):
             if not i % 5:
                 print((""))
             string = str(i+1) + ") " + list_project[i]
             print("{0:20s}".format(string), end="", flush=True)
         answer=input("\nChosee the project: ")
-        if answer.isdigit():
-            answer=int(answer)-1
-            if answer >= len(list_project):
-                print(("the number is not corrected, try again"))
-                continue
+        answer=str(answer)
+        answer_list=[]
+        answer_list_aux=answer.split(' ')
+        m=0
+        for ans in answer_list_aux:
+            if ans.isdigit():
+               ans=int(ans)-1
+               if ans >= len(list_project):
+                   print(("the number is not corrected, try again"))
+                   break
+               else:
+                   answer_list.append(list_project[ans])
             else:
-                answer=list_project[answer]
-        else:
-            if not (answer in list_project):
-                print(("the proyect is not corrected, try again"))
-                continue
-        loop=False
-    return answer
+                if not (ans in list_project):
+                   if ans is "exit":
+                      exit(1)
+                   print(("the proyect is not corrected, try again"))
+                   break
+                else:
+                    answer_list.append(ans)
+            m+=1
+        print(answer_list)
+        if m >= len(answer_list):
+            loop=False
+    return answer_list
     #import pdb; pdb.set_trace()
 """
 This function allows the user to download all images from one project
 """
 
 
-def download_from_xnat(project_id, input_xnat, user, password):
+def download_from_xnat(project_id, input_xnat, user, password, log_path):
+    global dictionary_sessions
     load_dictionary()
     subject_url = url + "/data/projects/" + project_id + "/subjects?format=csv"
-    session_dictionary={}
+
     scans_frequency={}
     if os.path.isfile(dictionary_path + "diccionary_session.dic"):
         session_dictionary = io_objects.load_pickle(dictionary_path + "diccionary_session.dic")
@@ -138,8 +151,10 @@ def download_from_xnat(project_id, input_xnat, user, password):
                                 for scan_pos in range(len(sp)):
                                     #print((sp[scan_pos]))
                                     number_scan = sp[scan_pos]["data_fields"]["ID"]
+                                    #print("--------------------------> "+str(number_scan))
                                     frames_scan = sp[scan_pos]["data_fields"]["frames"]
                                     name_scan = sp[scan_pos]["data_fields"]["type"]
+                                    
                                     scans_frequency[name_scan]= scans_frequency.get(name_scan, 0) + 1
                                     position_scan = (sp[scan_pos]
                                         ["data_fields"].get("parameters/orientation", ""))
@@ -153,49 +168,68 @@ def download_from_xnat(project_id, input_xnat, user, password):
                                             + ", " + str(number_scan) + ", " + str(frames_scan)
                                             + ", " + position_scan + ", " + str(is_nifti) + ', ' + name_scan))
                                             dictionary_scans[name_scan]=[number_scan, frames_scan, position_scan]
-                        session_dictionary[group_id.split('_')[1]
+                                            #print(dictionary_scans)
+                        dictionary_sessions[group_id.split('_')[1]
                             + "-" + accession_number] = (
                                 [
                                     group_id, dictionary_scans#, project_real_id
                                 ]
                             )
-    for item, value in session_dictionary.items():
-        print ((value))
-        for item_scan, value_scan in value[1].items():
-            if not os.path.isdir(input_xnat):
-                bash.bash_command("mkdir -p " + input_xnat)
-            nifti_url= url + "/data/experiments/" + item.split('-')[1] + "/scans/" + item_scan + "/resources/NIFTI/files?format=zip&projectIncludedInPath=true&subjectIncludedInPath=true"
-            out, err = bash.bash_command("wget --user=" + user +" --password=" + password + " --auth-no-challenge --no-check-certificate -P " + download_path + " " + nifti_url)
-            print ((err))
-            out, err = bash.bash_command("unzip -o -d " + download_path+' ' + download_path + "files*")
-            out, err = bash.bash_command("find " + download_path + " -iname \"*.nii.gz\"")
-            #for nii_files
-            rename_path = out.split('\n')[0]
-            #ut, err = bash.bash_command("mv " + out.split('\n')[0] +' '+ rename_path)
-            dicom_url = ("https://ceib.cipf.es/xnat/REST/services/dicomdump?src="
-                + "/archive/projects/" + item.split('-')[0]  + "/experiments/"
-                + item.split('-')[1] + "/scans/" + value_scan[0]
-                + "&format=json")
-            out, err = bash.bash_command("wget --user=" + user +" --password=" + password + " --auth-no-challenge --no-check-certificate -O " + rename_path[:-7]+".json" + " " + dicom_url)
-            #bash.print_out_err("wget", out, err)
-            print ((err))
-            file_=file_funtions.FileInfo(rename_path[:-7]+".json")
-            if file_.size < 100:
-                print("Error: dicom Header Void")
-                print("write exit or continue")
-                import pdb
-                pdb.set_trace()
-            scan = file_.filepath.split(os.sep)[-5]
-            io_json.add_tag_dicom("(0008,0050)","Accesion Number",item.split('-')[1],file_.filepath)
-            io_json.add_tag_dicom("(0008,103E)","Series Description",item_scan,file_.filepath)
-            out, err = bash.bash_command("cp -r -d -f "+ download_path + value[0].split('_')[1] + ' ' + input_xnat)
-            out, err = bash.bash_command("rm -r -d " + download_path +u'*')
-            #bash.print_out_err("rm -r -d " + download_path +'*', out, err)
-            #print ((err))
-    io_objects.save_pickle(scans_frequency,dictionary_path + project_id +"name_scan_frequency.dic")
-    csv="name_scans, frequency\n"
-    for k,v in scans_frequency.items():
-        csv+= k +',' + str(v) + '\n'
-    with open(dictionary_path + project_id + "_name_scan_frequency.csv", '+w') as csv_file:
-        csv_file.write(csv)
-    io_objects.save_pickle(session_dictionary,dictionary_path + "dictionary_session.dic")
+                        #print("++++++++++++++++++"+str(dictionary_sessions[group_id.split('_')[1]
+                         #   + "-" + accession_number]))
+    io_objects.save_pickle(dictionary_sessions,dictionary_path + "dictionary_session.dic")
+    # download files
+    
+    for item, value in dictionary_sessions.items():
+        if item.split('-')[0] == project_id:
+            print ((value))
+            for item_scan, value_scan in value[1].items():
+                print(">>>>>>>>>>>"+str(value_scan))
+                if not os.path.isdir(input_xnat):
+                    bash.bash_command("mkdir -p " + input_xnat)
+                nifti_url= url + "/data/experiments/" + item.split('-')[1] + "/scans/" + str(value_scan[0]) + "/resources/NIFTI/files?format=zip&projectIncludedInPath=true&subjectIncludedInPath=true"
+                out, err = bash.bash_command("wget --user=" + user +" --password=" + password + " --auth-no-challenge --no-check-certificate -P " + download_path + " " + nifti_url)
+                print ((err))
+                if not "200 OK" in err:
+                    with open(log_path,"a") as project_log:
+                        project_log.write(err)
+                    continue
+                out, err = bash.bash_command("unzip -o -d " + download_path+' ' + download_path + "files*")
+                out, err = bash.bash_command("find " + download_path + " -iname \"*.nii.gz\"")
+                #for nii_files
+                rename_path = out.split('\n')[0]
+                #ut, err = bash.bash_command("mv " + out.split('\n')[0] +' '+ rename_path)
+                print(value_scan[0])
+                dicom_url = ("https://ceib.cipf.es/xnat/REST/services/dicomdump?src="
+                    + "/archive/projects/" + item.split('-')[0]  + "/experiments/"
+                    + item.split('-')[1] + "/scans/" + str(value_scan[0])
+                    + "&format=json")
+                out, err = bash.bash_command("wget --user=" + user +" --password=" + password + " --auth-no-challenge --no-check-certificate -O " + rename_path[:-7]+".json" + " " + dicom_url)
+                #bash.print_out_err("wget", out, err)
+                if not "200 OK" in err:
+                    with open(log_path,"a") as project_log:
+                        project_log.write(err)
+                    continue
+                print ((err))
+                file_=file_funtions.FileInfo(rename_path[:-7]+".json")
+                if file_.size < 100:
+                    print("Error: dicom Header Void")
+                    print("write exit or continue")
+                    import pdb
+                    pdb.set_trace()
+                print(file_.filepath)
+                scan = file_.filepath.split(os.sep)[-5]
+                io_json.add_tag_dicom("(0008,0050)","Accesion Number",item.split('-')[1],file_.filepath)
+                io_json.add_tag_dicom("(0008,103E)","Series Description",item_scan,file_.filepath)
+                out, err = bash.bash_command("cp -r -d -f "+ download_path + value[0].split('_')[1] + ' ' + input_xnat)
+                out, err = bash.bash_command("rm -r -d " + download_path +u'*')
+                #bash.print_out_err("rm -r -d " + download_path +'*', out, err)
+                #print ((err))
+        #io_objects.save_pickle(scans_frequency,dictionary_path + project_id +"name_scan_frequency.dic")
+        #csv="name_scans, frequency\n"
+        #for k,v in scans_frequency.items():
+        #    csv+= k +',' + str(v) + '\n'
+        #with open(dictionary_path + project_id + "_name_scan_frequency.csv", '+w') as csv_file:
+        #    csv_file.write(csv)
+    
+    

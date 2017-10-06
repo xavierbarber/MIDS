@@ -52,5 +52,5 @@ def csv_2_dict(filepath):
             dict_2 = dict()
             for item_pos in line_list_range:
                 dict_2[line_list_cab[item_pos]] = line_list[item_pos]
-            dict_[key] = dict_2
-    return dict_
+            dict_[key.lower()] = dict_2
+    save_pickle(dict_, filepath[:-3]+"dic")

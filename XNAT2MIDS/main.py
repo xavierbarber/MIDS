@@ -66,6 +66,7 @@ import time
 import sys
 import getpass
 import argparse
+import time
 from datetime import datetime
 from calendar import isleap
 import Bash_functions.bash_exe as bash
@@ -83,9 +84,9 @@ path_programme = file_funtions.FileInfo(os.path.realpath(__file__))
 # GLOBAL statement of the path where the objects and dictionaries
 # python is stored
 dictionary_path = path_programme.path + ".python_objects" + os.sep
-
+log_path = path_programme.path + ".log/"
 # GLOBAL statement of the project which is download
-project_id = ""
+project_id_list = []
 
 # Path where xnat files are stored
 xnat_data_path = ""
@@ -122,12 +123,12 @@ def load_dictionary():
             io_objects.load_pickle(dictionary_path + "dictionary_session.dic"))
     # this dictionary contains all word of scans for classifying all
     # images in MIDS
-    if not os.path.exists(dictionary_path + "dictionary_scans.dic"):
+    if not os.path.exists(dictionary_path + "dictionary_scan.dic"):
         print(('no existe diccionario'))
         exit(0)
     else:
         dictionary_scans = dict(
-            io_objects.load_pickle(dictionary_path + "dictionary_scans.dic"))
+            io_objects.load_pickle(dictionary_path + "dictionary_scan.dic"))
 
 
 def create_directorio_MIDS():
@@ -135,7 +136,7 @@ def create_directorio_MIDS():
     This function allows the user to convert the xnat directory to
     mids directory
     """
-
+    error=0
     global dictionary_sessions, dictionary_scans
     depth_path_xnat = xnat_data_path.depth + 3
     for sessions_xnat in file_funtions.get_dirs(xnat_data_path.filepath):
@@ -160,27 +161,34 @@ def create_directorio_MIDS():
             dwi_index = 1
             fmri_index = 1
             perfusion_index=1
+            others_index=1
             unassigned_index = 1
             for dicom_json in file_funtions.get_files(sessions_xnat.filepath):
                 if dicom_json.match("*.json") and dicom_json.is_file:
                     linea = dicom_json.filepath.replace(xnat_data_path.filepath, '')
                     nii_gz_list_path = linea.split('/')
-                    department_path = nii_gz_list_path[1]
-                    #subject = nii_gz_list_path[2]
-                    session = nii_gz_list_path[3]
-                    scan =nii_gz_list_path[5].split('-')[1:]
+                    department_path = nii_gz_list_path[0]
+                    #subject = nii_gz_list_path[1]
+                    session = nii_gz_list_path[2]
+                    scan =nii_gz_list_path[4].split('-')[1:]
                     scan = str.join('-',scan)
                     #print((scan))
                     accession = (
                         io_json.get_tag_dicom("(0008,0050)",dicom_json.filepath)
                         )["value"]
+                    #print(accession)
                     if accession == None:
                         print("error: no hay un accesion number en el dicom")
                         continue
 
                     #import pdb; pdb.set_trace().
-                    group = dictionary_sessions[department_path + '-' + accession][0].split('_')
-
+                    try:
+                        group = dictionary_sessions[department_path + '-' + accession][0].split('_')
+                    except KeyError:
+                        error+=1
+                        print(error)
+                        continue
+						
                     #control_path = group[0] + '_' + group[1]
                     subject_name = 'sub-' + group[2]
                     session_number = session.split('-')
@@ -189,10 +197,10 @@ def create_directorio_MIDS():
                     else:
                         num_session = "ses-" + session_number[1]
 
-                    modality_label = dictionary_scans[scan]["Modality_label"]
-                    data_type = dictionary_scans[scan]["data_type"]
+                    modality_label = dictionary_scans[scan.lower()]["Modality_label"]
+                    data_type = dictionary_scans[scan.lower()]["data_type"]
                     subject_path = (department_path + os.sep + subject_name + os.sep)
-
+                    print(modality_label)
                     if "T1w" == modality_label:
                         print(("t1w"))
                         acq_index=1
@@ -367,10 +375,26 @@ def create_directorio_MIDS():
 
                             acq_index += 1
                         perfusion_index += 1
+                    elif modality_label:
+                        print((modality_label))
+                        acq_index=1
+                        dicom_name = subject_name + "_" + num_session +"_acq-" + str(acq_index) + "_run-" + str(others_index) + "_"+modality_label+".json"
+                        new_path_mids = mids_data_path.filepath + os.sep + subject_path + num_session + os.sep+ data_type + os.sep
+                        if not os.path.exists(new_path_mids):
+                            bash.bash_command("mkdir -p " + new_path_mids)
+                        bash.bash_command("cp " + dicom_json.filepath + " " +new_path_mids + dicom_name)
+                        out, err = bash.bash_command("ls " + dicom_json.path + "*nii.gz")
+                        nifti_files = out.split('\n')
+                        for nifti_file in nifti_files[:-1]:
+                            nii_name = subject_name + "_" + num_session + "_acq-" + str(acq_index) + "_run-" + str(others_index) + "_"+modality_label+".nii.gz"
+                            bash.bash_command("cp " + nifti_file + " " +new_path_mids + nii_name)
+
+                            acq_index += 1
+                        others_index += 1
                     else:
                         print(("no found"))#############stir
                         unassigned_index += 1
-
+    print(error)
 
 
 
@@ -489,7 +513,7 @@ def main():
     """
 
     ## global variables declaration
-    global project_id, path_csv, xnat_data_path, mids_data_path
+    global project_id_list, path_csv, xnat_data_path, mids_data_path
     global user, password, path_programme, dictionary_sessions
     global dictionary_scans
 
@@ -538,31 +562,42 @@ there are 3 funtions in this code:
     help='the directory where the files will be downloaded')
     parser.add_argument('-o ', '--output', type=str,
     help='Directory where the MIDS model is applied')
-    parser.add_argument('-p ', '--project', nargs='?', default ="", type=str,
+    parser.add_argument('-p ', '--project', nargs='*', default ="", type=str,
     help="""The project name to download, if the project is omitted,
     the aplication show all projects in xnat to choice""")
     args = parser.parse_args()
-
+    if not os.path.exists(log_path):
+        os.mkdir(log_path)
     ##Depends of the option, any funtions are activated
     if not args.project is "" and args.input:
         user = input('User of XNAT: ')
         password = getpass.getpass("Password of XNAT: ")
         xnat_data_path=args.input
         if args.project:
-            project_id = args.project
+			
+            project_id_list+=args.project.split(' ')
         else:
-            project_id = dfx.catalog_projects(user, password)
-        dfx.download_from_xnat(
-            project_id, xnat_data_path, user, password
+            project_id_list = dfx.catalog_projects(user, password)
+        for project_id in project_id_list:
+            with open(log_path+project_id+".log","+w") as project_log:
+                project_log.write("Current date & time " + time.strftime("%c"))
+            print(project_id)
+            dfx.download_from_xnat(
+            project_id, xnat_data_path, user, password, log_path + project_id+".log"
             )
     if args.csv:
-        io_objects.csv_2_dict()
+        io_objects.csv_2_dict(dictionary_path + "dictionary_scan.csv")
     if args.input and args.output:
         xnat_data_path = file_funtions.FileInfo(args.input)
+       	if not os.path.isdir(args.output):
+            os.mkdir(args.output)
         mids_data_path = file_funtions.FileInfo(args.output)
         print(("MIDS are generating..."))
         time.sleep(2)
         load_dictionary()
+        #print(len(dictionary_scans.items()))
+        #for i in dictionary_scans.items():
+        #    print(i)
         create_directorio_MIDS()
         create_participants_tsv()
         create_scans_tsv()
