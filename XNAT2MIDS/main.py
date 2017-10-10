@@ -168,6 +168,9 @@ def create_directorio_MIDS():
                     linea = dicom_json.filepath.replace(xnat_data_path.filepath, '')
                     nii_gz_list_path = linea.split('/')
                     department_path = nii_gz_list_path[0]
+                    if not os.path.isfile(log_path+department_path+"_xnat_to_mids.log"):
+                        with open(log_path+department_path+"_xnat_to_mids.log","+w") as project_log:
+                            project_log.write("Current date & time " + time.strftime("%c"))
                     #subject = nii_gz_list_path[1]
                     session = nii_gz_list_path[2]
                     scan =nii_gz_list_path[4].split('-')[1:]
@@ -187,6 +190,8 @@ def create_directorio_MIDS():
                     except KeyError:
                         error+=1
                         print(error)
+                        with open(log_path+department_path+"_xnat_to_mids.log","a") as project_log:
+                            project_log.write("error in diccionary sessions: "+ department_path + '-' + accession + ", " + scan)
                         continue
 						
                     #control_path = group[0] + '_' + group[1]
@@ -196,11 +201,16 @@ def create_directorio_MIDS():
                         num_session = "ses-1"
                     else:
                         num_session = "ses-" + session_number[1]
-
-                    modality_label = dictionary_scans[scan.lower()]["Modality_label"]
+                    try:
+                        modality_label = dictionary_scans[scan.lower()]["Modality_label"]
+                    except KeyError:
+                        print("modality label not found: " + scan)
+                        with open(log_path+department_path+"_xnat_to_mids.log","a") as project_log:
+                            project_log.write("modality label not found: "+ department_path + '-' + accession + ", " + scan + '\n')
+                        continue
                     data_type = dictionary_scans[scan.lower()]["data_type"]
                     subject_path = (department_path + os.sep + subject_name + os.sep)
-                    print(modality_label)
+                    #print(modality_label)
                     if "T1w" == modality_label:
                         print(("t1w"))
                         acq_index=1
@@ -239,7 +249,7 @@ def create_directorio_MIDS():
                             bash.bash_command("cp " + nifti_file + " " +new_path_mids + nii_name)
                             acq_index += 1
                         T2w_index += 1
-                        print(("t2w"))
+                        #print(("t2w"))
                     elif "T2star" == modality_label:
                         print(("t2star"))
                     elif "FLAIR" == modality_label:#############
@@ -376,7 +386,7 @@ def create_directorio_MIDS():
                             acq_index += 1
                         perfusion_index += 1
                     elif modality_label:
-                        print((modality_label))
+                        #print((modality_label))
                         acq_index=1
                         dicom_name = subject_name + "_" + num_session +"_acq-" + str(acq_index) + "_run-" + str(others_index) + "_"+modality_label+".json"
                         new_path_mids = mids_data_path.filepath + os.sep + subject_path + num_session + os.sep+ data_type + os.sep
@@ -388,11 +398,10 @@ def create_directorio_MIDS():
                         for nifti_file in nifti_files[:-1]:
                             nii_name = subject_name + "_" + num_session + "_acq-" + str(acq_index) + "_run-" + str(others_index) + "_"+modality_label+".nii.gz"
                             bash.bash_command("cp " + nifti_file + " " +new_path_mids + nii_name)
-
                             acq_index += 1
                         others_index += 1
                     else:
-                        print(("no found"))#############stir
+                        #print(("no found"))#############stir
                         unassigned_index += 1
     print(error)
 
@@ -599,7 +608,9 @@ there are 3 funtions in this code:
         #for i in dictionary_scans.items():
         #    print(i)
         create_directorio_MIDS()
+        print("participats tsv are generating...")
         create_participants_tsv()
+        print("scan tsv are generating...")
         create_scans_tsv()
 
 
