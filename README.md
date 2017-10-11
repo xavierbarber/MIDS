@@ -1,7 +1,7 @@
 
 <div class="clearfix" style="padding: 10px; padding-left: 0px">
 <a href="http://bimcv.cipf.es/"><img src="./images/logotipo-fisabio_tauv.png" width="500px" style="text-align:center; display: inline-block;">
-<a href="http://ceib.san.gva.es"><img src="./images/logo_CEIB.png" width="150px" class="pull-right" style="display: inline-block; margin: 0px;"></a>
+<a href="http://ceib.san.gva.es"><img src="./images/logo_CEIB.png" width="320px" class="pull-right" style="display: inline-block; margin-left: 300px;"></a>
 </div>
 
 
