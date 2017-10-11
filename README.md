@@ -5,8 +5,8 @@
 </div>
 <br></br>
 
-
-<h1 style="text-align:center">Medical Imaging Bank Valencia Region</h1>
+<center> <h1>Medical Imaging Bank Valencia Region 1</h1> </center>
+<!--<h1 style="text-align:center">Medical Imaging Bank Valencia Region</h1>-->
 <h2 style="text-align:center">Medical Imaging Data Structure</h2>
 
 <p style="text-align:justify">
@@ -26,12 +26,6 @@ Currently, distinc forms to store images and medical information exist, but ther
 <p style="text-align:justify">
 This desing is called MIDS (Medical Imaging Data Structure). MIDS is a new standard that contains every type of medical information and images in simple hierarchy folders. This is born as an extension of the standard BIDS (Brain Imaging Data Structure). BIDS [<span style="color:gray">Gorgolewski et al.</span>] is a structure that collect medical brain images, but MIDS pretend to extend it far away and not limit it the use to medical brain images. the idea is to create the same structure with both brain, column images or torso,... whether Resonance magnetic, Computed tomography, ecography,... This structure will definitely follow the same process regardless of the type and shape of the image.
 </p>
-
-<!---
-<p style="text-align:justify">
-In conclusion, MIDS gathers the essence of BIDS in terms of structure and naming but it is only defined in the case of brain images and MIDS aims to extend other anatomical parts following the same clear and easy structure of the BIDS
-</p>
---->
 
 
 ## Index
@@ -62,11 +56,11 @@ There are any studies that proposal a standar to store this type of data. One of
 
 
 <p style="text-align:center">
-<img src="./images/bids2.png" >
+<img src="./images/dicom2bids.png" >
+</p>
 <div style='text-align:center;'>
 figure 1: DICOM to BIDS conversion with the tool Dcm2Bids
 </div>
-</p>
 
 
 <p style="text-align:justify">
@@ -87,10 +81,10 @@ One proposal to extend and include BIDS into MIDS is create new variable in name
 
 <p style="text-align:center">
 <img src="./images/MIDS_directory.png" >
+</p>  
 <div style='text-align:center;'>
 figure 2: MIDS or BIDS structure of skull magnetic resonance
 </div>
-</p>
 
 <a id='aplications'></a>
 # Aplications
@@ -128,7 +122,7 @@ there are 3 funtions in this code:
 
       + Prefix	-o --output OUTPUT	2) Directory where the MIDS model is applied
 
-<a id='mids'></a>
+<a id='future'></a>
 ## 4. Future Lines
 
 Now, BIDS is a potential standard to store images of RM and there is a little diference between BIDS and MIDS. However,MIDS pretend to incorporate, within epidemiological studies based on Population Image (BIMCV), any type of [modality](http://dicomlookup.com/modalities.asp) of medical image (i.e. Computed Radiography,Computed Tomography, Ultrasound, Mammography, ...)
@@ -144,7 +138,3 @@ Mildenberger, P., Eichelberg, M., & Martin, E. (2002). Introduction to the DICOM
 
 Gorgolewski, K. J., Auer, T., Calhoun, V. D., Craddock, R. C., Das, S., Duff, E. P., ... & Handwerker, D. A. (2016). The brain imaging data structure, a format for organizing and describing outputs of neuroimaging experiments. Scientific Data, 3, 160044.
 
-
-```python
-
-```
