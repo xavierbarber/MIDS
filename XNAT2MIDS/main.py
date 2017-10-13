@@ -193,7 +193,7 @@ def create_directorio_MIDS():
                         with open(log_path+department_path+"_xnat_to_mids.log","a") as project_log:
                             project_log.write("error in diccionary sessions: "+ department_path + '-' + accession + ", " + scan)
                         continue
-						
+
                     #control_path = group[0] + '_' + group[1]
                     subject_name = 'sub-' + group[2]
                     session_number = session.split('-')
@@ -484,11 +484,11 @@ def create_scans_tsv():
                     name_scan = (io_json.get_tag_dicom("(0008,103E)",dicom.filepath)["value"])
                     slides, plane = None,None
                     try:
-                        slides = dictionary_sessions[project + '-' + accession][1][name_scan][0]
+                        slides = dictionary_sessions[project + '-' + accession][1][name_scan][1]
                     except KeyError:
                         pass
                     try:
-                        plane = dictionary_sessions[project + '-' + accession][1][name_scan][1]
+                        plane = dictionary_sessions[project + '-' + accession][1][name_scan][2]
                     except KeyError:
                         pass
                     tsv_list = [None] * len(tags_list)
@@ -583,7 +583,7 @@ there are 3 funtions in this code:
         password = getpass.getpass("Password of XNAT: ")
         xnat_data_path=args.input
         if args.project:
-			
+
             project_id_list+=args.project.split(' ')
         else:
             project_id_list = dfx.catalog_projects(user, password)
