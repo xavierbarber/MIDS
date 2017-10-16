@@ -137,7 +137,7 @@ def create_directorio_MIDS():
     mids directory
     """
     error=0
-    global dictionary_sessions, dictionary_scans
+    global dictionary_sessions, dictionary_scans, xnat_data_path, mids_data_path
     depth_path_xnat = xnat_data_path.depth + 3
     for sessions_xnat in file_funtions.get_dirs(xnat_data_path.filepath):
         if depth_path_xnat == sessions_xnat.depth:
