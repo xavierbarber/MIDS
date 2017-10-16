@@ -40,7 +40,7 @@ This desing is called MIDS (Medical Imaging Data Structure). MIDS is a new stand
 
 >[5. References](#references)
 
->[A. Annex 1: licences](#annex1)
+<!-->[A. Annex 1: licences](#annex1)-->
 
 <a id='loading'></a>
 ## 1. Introduction
@@ -127,7 +127,7 @@ there are 3 funtions in this code:
 
 Now, BIDS is a potential standard to store images of RM and there is a little diference between BIDS and MIDS. However,MIDS pretend to incorporate, within epidemiological studies based on Population Image (BIMCV), any type of [modality](http://dicomlookup.com/modalities.asp) of medical image (i.e. Computed Radiography,Computed Tomography, Ultrasound, Mammography, ...).
 
-Taking in count, all images  in BIMCV come from clinical imaging protocols in RM. these imaging don't ajust to labels in BIDS and, for that reason, one proposal is to extend and specify format label in MIDS. this format structure is "\_OriModSeq" where "Ori" is the orientation (**ax**->axial,**sag**->sagital,**cor**->coronal), "Mod" is the modality of image (T1,T2,Stir,angio,...) and "Seq" is the scaning sequence (**SE**->Spin Echo,**FSE**->Fast Spin Echo,**GR**->Gradiente,...). For more information, see the table in ./MIDS/XNAT2MIDS/.python\_objects/dictionary\_scan.tsv in the column _Modality\_label_.
+Taking in count, all images  in BIMCV come from clinical imaging protocols in RM. these imaging don't ajust to labels in BIDS and, for that reason, one proposal is to extend and specify format label in MIDS. this format structure is "\_OriModSeq" where "Ori" is the orientation (**ax**->axial,**sag**->sagital,**cor**->coronal), "Mod" is the modality of image (T1,T2,Stir,angio,...) and "Seq" is the scaning sequence (**SE**->Spin Echo,**FSE**->Fast Spin Echo,**GR**->Gradiente,...). For more information, see the table in ./MIDS/XNAT2MIDS/.python\_objects/dictionary\_scan.csv in the column _Modality\_label_.
 
 <a id='references'></a>
 ## 5. References
@@ -139,4 +139,3 @@ Bennett CM., Miller MB. (2010) How reliable are the results from functional magn
 Mildenberger, P., Eichelberg, M., & Martin, E. (2002). Introduction to the DICOM standard. European radiology, 12(4), 920-927.
 
 Gorgolewski, K. J., Auer, T., Calhoun, V. D., Craddock, R. C., Das, S., Duff, E. P., ... & Handwerker, D. A. (2016). The brain imaging data structure, a format for organizing and describing outputs of neuroimaging experiments. Scientific Data, 3, 160044.
-
