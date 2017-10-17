@@ -154,7 +154,7 @@ def download_from_xnat(project_id, input_xnat, user, password, log_path):
                                     #print("--------------------------> "+str(number_scan))
                                     frames_scan = sp[scan_pos]["data_fields"]["frames"]
                                     name_scan = sp[scan_pos]["data_fields"]["type"]
-                                    
+
                                     scans_frequency[name_scan]= scans_frequency.get(name_scan, 0) + 1
                                     position_scan = (sp[scan_pos]
                                         ["data_fields"].get("parameters/orientation", ""))
@@ -162,7 +162,7 @@ def download_from_xnat(project_id, input_xnat, user, password, log_path):
                                     is_nifti = False
                                     for file_pos in range(len(fp)):
                                         #print((fp[file_pos]))
-                                        if fp[file_pos]["data_fields"].get("label") == "NIFTI":
+                                        if fp[file_pos]["data_fields"].get("label") == "NIFTI" and frames_scan>80:
                                             is_nifti = True
                                             print((group_id + ", " + accession_number
                                             + ", " + str(number_scan) + ", " + str(frames_scan)
@@ -179,7 +179,7 @@ def download_from_xnat(project_id, input_xnat, user, password, log_path):
                          #   + "-" + accession_number]))
     io_objects.save_pickle(dictionary_sessions,dictionary_path + "dictionary_session.dic")
     # download files
-    
+
     for item, value in dictionary_sessions.items():
         if item.split('-')[0] == project_id:
             print ((value))
@@ -231,5 +231,3 @@ def download_from_xnat(project_id, input_xnat, user, password, log_path):
         #    csv+= k +',' + str(v) + '\n'
         #with open(dictionary_path + project_id + "_name_scan_frequency.csv", '+w') as csv_file:
         #    csv_file.write(csv)
-    
-    
