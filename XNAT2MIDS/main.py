@@ -189,7 +189,7 @@ def create_directorio_MIDS():
                         group = dictionary_sessions[department_path + '-' + accession][0].split('_')
                     except KeyError:
                         error+=1
-                        print(error)
+                        print("error in diccionary sessions: "+ department_path + '-' + accession + ", " + scan+'\n')
                         with open(log_path+department_path+"_xnat_to_mids.log","a") as project_log:
                             project_log.write("error in diccionary sessions: "+ department_path + '-' + accession + ", " + scan+'\n')
                         continue
