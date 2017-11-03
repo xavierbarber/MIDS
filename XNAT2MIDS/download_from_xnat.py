@@ -231,3 +231,4 @@ def download_from_xnat(project_id, input_xnat, user, password, log_path):
         #    csv+= k +',' + str(v) + '\n'
         #with open(dictionary_path + project_id + "_name_scan_frequency.csv", '+w') as csv_file:
         #    csv_file.write(csv)
+
