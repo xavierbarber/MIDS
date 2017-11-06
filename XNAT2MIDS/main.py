@@ -211,7 +211,8 @@ def create_directorio_MIDS():
                     data_type = dictionary_scans[scan.lower()]["data_type"]
                     subject_path = (department_path + os.sep + subject_name + os.sep)
                     #print(modality_label)
-                    if "T1w" == modality_label:
+                    if ("T1w" in modality_label or "T1fse" in modality_label or
+                    "T1GR" in modality_label or "T1IR" in modality_label):
                         print(("t1w"))
                         acq_index=1
                         dicom_name = subject_name + "_" + num_session +"_acq-" + str(acq_index) + "_run-" + str(T1w_index) + "_"+modality_label+".json"
@@ -231,7 +232,7 @@ def create_directorio_MIDS():
                             acq_index += 1
                         T1w_index += 1
 
-                    elif "T1rho" == modality_label:
+                    """elif "T1rho" == modality_label:
                         print(("t1rho"))
                     elif "T1map" == modality_label:
                         print(("t1map"))
@@ -399,7 +400,7 @@ def create_directorio_MIDS():
                             nii_name = subject_name + "_" + num_session + "_acq-" + str(acq_index) + "_run-" + str(others_index) + "_"+modality_label+".nii.gz"
                             bash.bash_command("cp " + nifti_file + " " +new_path_mids + nii_name)
                             acq_index += 1
-                        others_index += 1
+                        others_index += 1"""
                     else:
                         #print(("no found"))#############stir
                         unassigned_index += 1
