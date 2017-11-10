@@ -436,21 +436,21 @@ def create_participants_tsv():
                             accession = (io_json.get_tag_dicom("(0008,0050)",json_files.filepath)["value"])
                             control_group=int(dictionary_sessions[department_path + '-' + accession][0].split('_')[0])
                             #print((json_files.filepath+"-----------------------------------------------------------------------"))
-                            try:
-                                list_age.append(int(io_json.get_tag_dicom("(0010,1010)",json_files.filepath)["value"][:-1]))
-                            except TypeError:
-                                print("No hay edad: " + json_files.filepath)
-                                birtday = (io_json.get_tag_dicom("(0010,0030)",json_files.filepath)["value"])
-                                study_date = (io_json.get_tag_dicom("(0008,0020)",json_files.filepath)["value"])
-                                birtday_list=[int(birtday[0:4]),int(birtday[4:6]),int(birtday[-2:])]
-                                study_list=[int(study_date[0:4]),int(study_date[4:6]),int(study_date[-2:])]
-                                start_date = datetime(birtday_list[0],birtday_list[1],birtday_list[2],12,33)
-                                end_date = datetime(study_list[0],study_list[1],study_list[2],12,33)
-                                diffyears = end_date.year - start_date.year
-                                difference  = end_date - start_date.replace(end_date.year)
-                                days_in_year = isleap(end_date.year) and 366 or 365
-                                difference_in_years = diffyears + (difference.days + difference.seconds/86400.0)/days_in_year
-                                list_age.append(int(difference_in_years))
+                            #try:
+                            #    list_age.append(int(io_json.get_tag_dicom("(0010,1010)",json_files.filepath)["value"][:-1]))
+                            #except TypeError:
+                            print("No hay edad: " + json_files.filepath)
+                            birtday = (io_json.get_tag_dicom("(0010,0030)",json_files.filepath)["value"])
+                            study_date = (io_json.get_tag_dicom("(0008,0020)",json_files.filepath)["value"])
+                            birtday_list=[int(birtday[0:4]),int(birtday[4:6]),int(birtday[-2:])]
+                            study_list=[int(study_date[0:4]),int(study_date[4:6]),int(study_date[-2:])]
+                            start_date = datetime(birtday_list[0],birtday_list[1],birtday_list[2],12,33)
+                            end_date = datetime(study_list[0],study_list[1],study_list[2],12,33)
+                            diffyears = end_date.year - start_date.year
+                            difference  = end_date - start_date.replace(end_date.year)
+                            days_in_year = isleap(end_date.year) and 366 or 365
+                            difference_in_years = diffyears + (difference.days + difference.seconds/86400.0)/days_in_year
+                            list_age.append(int(difference_in_years))
                             if sex == "U":
                                 sex = (io_json.get_tag_dicom("(0010,0040)",json_files.filepath)["value"])
                     csv_file += subjects.filename+'\t'+str(min(list_age))+'\t'+sex+'\t'+str(control_group)+'\n'
