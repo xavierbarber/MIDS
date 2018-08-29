@@ -8,6 +8,7 @@
 <center> <h1>Medical Imaging Bank Valencia Region 1</h1> </center>
 <!--<h1 style="text-align:center">Medical Imaging Bank Valencia Region</h1>-->
 <h2 style="text-align:center">Medical Imaging Data Structure</h2>
+<h2 style="text-align:center">BIDS Extension Proposal 20 (BEP020)</h2>
 
 <p style="text-align:justify">
 In order to add to the scientific knowledge, methods that yield reliable and reproducible results must be used.
@@ -50,7 +51,7 @@ At present, many studies based on obtaining a dataset of medical images for its 
 </p>
 
 <p style="text-align:justify">
-There are any studies that proposal a standar to store this type of data. One of them is BIDS ([Brain Imaging Data Structure](http://bids.neuroimaging.io/),[1]). BIDS is a proposal standar to store a magnetic resonance imaging and data in a structural folder hierarchy. This structure is very clear and easy to use. This standard is supported by several programs and libraries dedicated to the study of medical images (i.e. c-pacs, freesurfer, xnat, BIDSValidator...) and it is very used in the comunity researchers. In te Figure 1, a example of structure in BIDS is presented,the left directory is a folder with dicom images (<span style="color:gray">Mildenberger, Eichelberg & Martin,2002</span>) and the right directory is a BIDS structure  
+There are any studies that proposal a standar to store this type of data. One of them is BIDS ([Brain Imaging Data Structure](http://bids.neuroimaging.io/),[1]). BIDS is a proposal standar to store a magnetic resonance imaging and data in a structural folder hierarchy. This structure is very clear and easy to use. This standard is supported by several programs and libraries dedicated to the study of medical images (i.e. c-pacs, freesurfer, xnat, BIDSValidator...) and it is very used in the comunity researchers. In te Figure 1, a example of structure in BIDS is presented,the left directory is a folder with dicom images (<span style="color:gray">Mildenberger, Eichelberg & Martin,2002</span>) and the right directory is a BIDS structure
 </p>
 
 
@@ -76,15 +77,7 @@ Currently, MIDS tries to stablish yourself like a BIDS ampliation. the structura
 </p>
 
 <p style="text-align:justify">
-One proposal to extend and include BIDS into MIDS is create new variable in named specification of files. For example the estructure in one file is **sub-*id*[*obtative\_list\_variables*]\_*modality*.nii.gz** the proposal is add in this obtative variables the term \_bop-*body\_part\_dicom* which refers to the part of the body collected in the label dicom [(0018,0015)](http://dicomlookup.com/lookup.asp?sw=Tnumber&q=(0018,0015). The absence of the bop variable is set as the default skull.Thus, any BIDS structure is included in MIDS. The figure 2 shows a MIDS structure example of head</p>
-
-
-<p style="text-align:center">
-<img src="./images/MIDS_directory.png" >
-</p>  
-<div style='text-align:center;'>
-figure 2: MIDS or BIDS structure of skull magnetic resonance
-</div>
+One proposal to extend and include BIDS into MIDS is create new variable in named specification of files. For example the estructure in one file is **sub-*id*[*obtative\_list\_variables*]\_*modality*.nii.gz** the proposal is add in this obtative variables the term \_bop-*body\_part\_dicom* which refers to the part of the body collected in the label dicom [(0018,0015)](http://dicomlookup.com/lookup.asp?sw=Tnumber&q=(0018,0015). The absence of the bop variable is set as the default skull.Thus, any BIDS structure is included in MIDS. The folder **data** shows a one exemple of input directory and output directory in MIDS structure.</p>
 
 <a id='aplications'></a>
 # Aplications
@@ -100,28 +93,29 @@ python3.5 main.py -w Project_id -i dirXNAT -o dirOutput
 
 ### Options
 
-there are 3 funtions in this code:
+there are 2 funtions in this code:
 
   Download one project from xnat aplicatión:
 
-     arguments:
+        download one project from xnat aplicatión:
 
-      + Prefix	-p --project [PROJECT]	    1) The project name to download, if the project is omitted, the aplication show all projects in xnat to choice
+        arguments:
 
-      + Prefix	-i --input INPUT   	    2) the directory where the files will be downloaded
+            + Prefix  -w --web PAGE_WEB        1) The ULR page where XNAT is.
+            + Prefix  -p --project [PROJECTS]  2) The project name to download
+            + Prefix  -i --input PATH	   3) the directfory where the files
+                                                  will be downloaded
+            + Prefix  -u --user [USER]         4) The username to loggin in XNAT
+                                                If not write a username, It
+                                                loggin as guest.
 
-  Update the dictionary of scans, it is use to clasificate any medical image in MIDS structure:
+        Convert the xnat directories of the project in MIDS format:
+        arguments:
 
-      + Prefix  -c --csv    1)Scans dictionary is uploaded when this flag is appeared
-
-  Convert the xnat directories of the project in MIDS format:
-
-    arguments:
-
-      + Prefix	-i --input INPUT	1) the directory where the files will be downloaded
-
-      + Prefix	-o --output OUTPUT	2) Directory where the MIDS model is applied
-
+            + Prefix  -i --input  PATH   1) the directfory where the files will
+                                            be downloaded
+            + Prefix  -o --output PATH   2) Directory where the MIDS model
+                                            is applied.
 <a id='future'></a>
 ## 4. Future Lines
 
