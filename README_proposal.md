@@ -315,7 +315,7 @@ Possible labels:
       - In the case of mri, the plane can be calculated from the DICOM tag: Image Orientation (0020,0037)
 
 + <modality_Dicom>: Type of equipment that acquired the original data used to create the images in this Series. Dicom tag (0008,0060), See Section C.7.3.1.1.1 in DICOM PS3.3 for Defined Terms.
-+
+
 <a id='lstu'></a>
 ## 2.3. Longitudinal studies with multiple sessions example
 
