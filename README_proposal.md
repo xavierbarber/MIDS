@@ -169,15 +169,16 @@ The added level corresponds to the different modalities of medical imaging, whic
 
 
 
-<style type="text/css">
-.tg  {border-collapse:collapse;border-spacing:0;}
-.tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;}
-.tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;}
-.tg .tg-c3ow{border-color:inherit;text-align:center;vertical-align:top}
-.tg .tg-us36{border-color:inherit;vertical-align:top}
-.tg .tg-dvpl{border-color:inherit;text-align:right;vertical-align:top}
-</style>
+
 <table class="tg">
+  <style type="text/css">
+  .tg  {border-collapse:collapse;border-spacing:0;}
+  .tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;}
+  .tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;}
+  .tg .tg-c3ow{border-color:inherit;text-align:center;vertical-align:top}
+  .tg .tg-us36{border-color:inherit;vertical-align:top}
+  .tg .tg-dvpl{border-color:inherit;text-align:right;vertical-align:top}
+  </style>
   <tr>
     <th class="tg-us36">Modality of medical image<br></th>
     <th class="tg-c3ow">Technique<br></th>
@@ -392,16 +393,17 @@ Data/
 ## 2.3.1.Label modality_label for MRI
 Anatomical (structural) data acquired for a participant. In brain imaging, the modalities currently supported by BIDS are used, they include:
 
-<style type="text/css">
-.tg  {border-collapse:collapse;border-spacing:0;border-color:#ccc;}
-.tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:#ccc;color:#333;background-color:#fff;}
-.tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:#ccc;color:#333;background-color:#f0f0f0;}
-.tg .tg-dc35{background-color:#f9f9f9;border-color:inherit;vertical-align:top}
-.tg .tg-c3ow{border-color:inherit;text-align:center;vertical-align:top}
-.tg .tg-us36{border-color:inherit;vertical-align:top}
-.tg .tg-abip{background-color:#f9f9f9;border-color:inherit;text-align:center;vertical-align:top}
-</style>
+
 <table class="tg">
+  <style type="text/css">
+  .tg  {border-collapse:collapse;border-spacing:0;border-color:#ccc;}
+  .tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:#ccc;color:#333;background-color:#fff;}
+  .tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:#ccc;color:#333;background-color:#f0f0f0;}
+  .tg .tg-dc35{background-color:#f9f9f9;border-color:inherit;vertical-align:top}
+  .tg .tg-c3ow{border-color:inherit;text-align:center;vertical-align:top}
+  .tg .tg-us36{border-color:inherit;vertical-align:top}
+  .tg .tg-abip{background-color:#f9f9f9;border-color:inherit;text-align:center;vertical-align:top}
+  </style>
   <tr>
     <th class="tg-us36">Name</th>
     <th class="tg-c3ow">modality_label</th>
@@ -484,16 +486,17 @@ MR structural data can be acquired with different parameter values. To represent
 
 Next, Possible sequences of labels describing the sequences used in obtaining images included in BEP001:
 
-<style type="text/css">
-.tg  {border-collapse:collapse;border-spacing:0;border-color:#ccc;}
-.tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:#ccc;color:#333;background-color:#fff;}
-.tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:#ccc;color:#333;background-color:#f0f0f0;}
-.tg .tg-dc35{background-color:#f9f9f9;border-color:inherit;vertical-align:top}
-.tg .tg-c3ow{border-color:inherit;text-align:center;vertical-align:top}
-.tg .tg-us36{border-color:inherit;vertical-align:top}
-.tg .tg-abip{background-color:#f9f9f9;border-color:inherit;text-align:center;vertical-align:top}
-</style>
+
 <table class="tg">
+  <style type="text/css">
+  .tg  {border-collapse:collapse;border-spacing:0;border-color:#ccc;}
+  .tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:#ccc;color:#333;background-color:#fff;}
+  .tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:#ccc;color:#333;background-color:#f0f0f0;}
+  .tg .tg-dc35{background-color:#f9f9f9;border-color:inherit;vertical-align:top}
+  .tg .tg-c3ow{border-color:inherit;text-align:center;vertical-align:top}
+  .tg .tg-us36{border-color:inherit;vertical-align:top}
+  .tg .tg-abip{background-color:#f9f9f9;border-color:inherit;text-align:center;vertical-align:top}
+  </style>
   <tr>
     <th class="tg-us36">Name</th>
     <th class="tg-c3ow">Sequence_label<br></th>
@@ -541,16 +544,17 @@ Table 3:  The sequences currently admitted in BEP001
 
 MIDS incorporates the following sequences and techniques:
 
-<style type="text/css">
-.tg  {border-collapse:collapse;border-spacing:0;border-color:#ccc;}
-.tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:#ccc;color:#333;background-color:#fff;}
-.tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:#ccc;color:#333;background-color:#f0f0f0;}
-.tg .tg-dc35{background-color:#f9f9f9;border-color:inherit;vertical-align:top}
-.tg .tg-c3ow{border-color:inherit;text-align:center;vertical-align:top}
-.tg .tg-us36{border-color:inherit;vertical-align:top}
-.tg .tg-abip{background-color:#f9f9f9;border-color:inherit;text-align:center;vertical-align:top}
-</style>
+
 <table class="tg">
+  <style type="text/css">
+  .tg  {border-collapse:collapse;border-spacing:0;border-color:#ccc;}
+  .tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:#ccc;color:#333;background-color:#fff;}
+  .tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:#ccc;color:#333;background-color:#f0f0f0;}
+  .tg .tg-dc35{background-color:#f9f9f9;border-color:inherit;vertical-align:top}
+  .tg .tg-c3ow{border-color:inherit;text-align:center;vertical-align:top}
+  .tg .tg-us36{border-color:inherit;vertical-align:top}
+  .tg .tg-abip{background-color:#f9f9f9;border-color:inherit;text-align:center;vertical-align:top}
+  </style>
   <tr>
     <th class="tg-us36">Name</th>
     <th class="tg-c3ow">Sequence_label / Techniques_label <br></th>
@@ -581,18 +585,19 @@ Table 4:  The sequences and techniques currently admitted in MIDS
 
 Below the different modalities of medical images, classified by the energy used in the acquisition, together with the DICOM Modes that belong to said categories:
 
-<style type="text/css">
-.tg  {border-collapse:collapse;border-spacing:0;border-color:#ccc;}
-.tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:#ccc;color:#333;background-color:#fff;}
-.tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:#ccc;color:#333;background-color:#f0f0f0;}
-.tg .tg-dc35{background-color:#f9f9f9;border-color:inherit;vertical-align:top}
-.tg .tg-c3ow{border-color:inherit;text-align:center;vertical-align:top}
-.tg .tg-us36{border-color:inherit;vertical-align:top}
-.tg .tg-abip{background-color:#f9f9f9;border-color:inherit;text-align:center;vertical-align:top}
-.tg .tg-yw4l{vertical-align:top}
-.tg .tg-b7b8{background-color:#f9f9f9;vertical-align:top}
-</style>
+
 <table class="tg">
+  <style type="text/css">
+  .tg  {border-collapse:collapse;border-spacing:0;border-color:#ccc;}
+  .tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:#ccc;color:#333;background-color:#fff;}
+  .tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:#ccc;color:#333;background-color:#f0f0f0;}
+  .tg .tg-dc35{background-color:#f9f9f9;border-color:inherit;vertical-align:top}
+  .tg .tg-c3ow{border-color:inherit;text-align:center;vertical-align:top}
+  .tg .tg-us36{border-color:inherit;vertical-align:top}
+  .tg .tg-abip{background-color:#f9f9f9;border-color:inherit;text-align:center;vertical-align:top}
+  .tg .tg-yw4l{vertical-align:top}
+  .tg .tg-b7b8{background-color:#f9f9f9;vertical-align:top}
+  </style>
   <tr>
     <th class="tg-us36">Modality of medical image<br></th>
     <th class="tg-c3ow">Modality label of Medical image<br>/mod-&lt;modality_medical_image_label&gt;</th>
@@ -809,17 +814,18 @@ This file is REQUIRED. The purpose of this file is to describe properties of the
 
 The columns of the participants description table stored in “participants.Tsv” are:
 
-<style type="text/css">
-.tg  {border-collapse:collapse;border-spacing:0;border-color:#ccc;}
-.tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:#ccc;color:#333;background-color:#fff;}
-.tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:#ccc;color:#333;background-color:#f0f0f0;}
-.tg .tg-c3ow{border-color:inherit;text-align:center;vertical-align:top}
-.tg .tg-us36{border-color:inherit;vertical-align:top}
-.tg .tg-b7b8{background-color:#f9f9f9;vertical-align:top}
-.tg .tg-yw4l{vertical-align:top}
-.tg .tg-rm6r{background-color:#f9f9f9;font-size:24px;text-align:center;vertical-align:top}
-</style>
+
 <table class="tg">
+  <style type="text/css">
+  .tg  {border-collapse:collapse;border-spacing:0;border-color:#ccc;}
+  .tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:#ccc;color:#333;background-color:#fff;}
+  .tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:#ccc;color:#333;background-color:#f0f0f0;}
+  .tg .tg-c3ow{border-color:inherit;text-align:center;vertical-align:top}
+  .tg .tg-us36{border-color:inherit;vertical-align:top}
+  .tg .tg-b7b8{background-color:#f9f9f9;vertical-align:top}
+  .tg .tg-yw4l{vertical-align:top}
+  .tg .tg-rm6r{background-color:#f9f9f9;font-size:24px;text-align:center;vertical-align:top}
+  </style>
   <tr>
     <th class="tg-us36">Participant</th>
     <th class="tg-c3ow">REQUIRED. Tag for a patient in MIDS. Cases where the pseudonymization is a long and confusing identification are possible. This would make it necessary to generate a more compact identifier (Participant)<br></th>
@@ -856,17 +862,18 @@ The columns of the participants description table stored in “participants.Tsv�
 
 Example:
 
-<style type="text/css">
-.tg  {border-collapse:collapse;border-spacing:0;border-color:#ccc;}
-.tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:#ccc;color:#333;background-color:#fff;}
-.tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:#ccc;color:#333;background-color:#f0f0f0;}
-.tg .tg-hjji{font-size:24px;text-align:center;vertical-align:top}
-.tg .tg-us36{border-color:inherit;vertical-align:top}
-.tg .tg-yw4l{vertical-align:top}
-.tg .tg-b7b8{background-color:#f9f9f9;vertical-align:top}
-.tg .tg-24i8{font-size:24px;vertical-align:top}
-</style>
+
 <table class="tg">
+  <style type="text/css">
+  .tg  {border-collapse:collapse;border-spacing:0;border-color:#ccc;}
+  .tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:#ccc;color:#333;background-color:#fff;}
+  .tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:#ccc;color:#333;background-color:#f0f0f0;}
+  .tg .tg-hjji{font-size:24px;text-align:center;vertical-align:top}
+  .tg .tg-us36{border-color:inherit;vertical-align:top}
+  .tg .tg-yw4l{vertical-align:top}
+  .tg .tg-b7b8{background-color:#f9f9f9;vertical-align:top}
+  .tg .tg-24i8{font-size:24px;vertical-align:top}
+  </style>
   <tr>
     <th class="tg-us36">Participant<br></th>
     <th class="tg-us36">ID_</th>
@@ -910,16 +917,17 @@ This file is RECOMMENDED as it provides the information referring to all the ses
 
 The columns of the session description table stored in “sub-\<tparticipant_label\>.tsv” are:
 
-<style type="text/css">
-.tg  {border-collapse:collapse;border-spacing:0;border-color:#ccc;}
-.tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:#ccc;color:#333;background-color:#fff;}
-.tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:#ccc;color:#333;background-color:#f0f0f0;}
-.tg .tg-us36{border-color:inherit;vertical-align:top}
-.tg .tg-b7b8{background-color:#f9f9f9;vertical-align:top}
-.tg .tg-yw4l{vertical-align:top}
-.tg .tg-rm6r{background-color:#f9f9f9;font-size:24px;text-align:center;vertical-align:top}
-</style>
+
 <table class="tg">
+  <style type="text/css">
+  .tg  {border-collapse:collapse;border-spacing:0;border-color:#ccc;}
+  .tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:#ccc;color:#333;background-color:#fff;}
+  .tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:#ccc;color:#333;background-color:#f0f0f0;}
+  .tg .tg-us36{border-color:inherit;vertical-align:top}
+  .tg .tg-b7b8{background-color:#f9f9f9;vertical-align:top}
+  .tg .tg-yw4l{vertical-align:top}
+  .tg .tg-rm6r{background-color:#f9f9f9;font-size:24px;text-align:center;vertical-align:top}
+  </style>
   <tr>
     <th class="tg-us36">Session<br>	<br><br></th>
     <th class="tg-us36">REQUIRED.<br></th>
@@ -947,17 +955,18 @@ The columns of the session description table stored in “sub-\<tparticipant_lab
 </table>
 
 Example:
-<style type="text/css">
-.tg  {border-collapse:collapse;border-spacing:0;border-color:#ccc;}
-.tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:#ccc;color:#333;background-color:#fff;}
-.tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:#ccc;color:#333;background-color:#f0f0f0;}
-.tg .tg-us36{border-color:inherit;vertical-align:top}
-.tg .tg-yw4l{vertical-align:top}
-.tg .tg-b7b8{background-color:#f9f9f9;vertical-align:top}
-.tg .tg-rm6r{background-color:#f9f9f9;font-size:24px;text-align:center;vertical-align:top}
-.tg .tg-0t3l{background-color:#f9f9f9;font-size:24px;vertical-align:top}
-</style>
+
 <table class="tg">
+  <style type="text/css">
+  .tg  {border-collapse:collapse;border-spacing:0;border-color:#ccc;}
+  .tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:#ccc;color:#333;background-color:#fff;}
+  .tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:#ccc;color:#333;background-color:#f0f0f0;}
+  .tg .tg-us36{border-color:inherit;vertical-align:top}
+  .tg .tg-yw4l{vertical-align:top}
+  .tg .tg-b7b8{background-color:#f9f9f9;vertical-align:top}
+  .tg .tg-rm6r{background-color:#f9f9f9;font-size:24px;text-align:center;vertical-align:top}
+  .tg .tg-0t3l{background-color:#f9f9f9;font-size:24px;vertical-align:top}
+  </style>
   <tr>
     <th class="tg-us36">Session<br><br></th>
     <th class="tg-us36">Age<br></th>
@@ -1025,17 +1034,18 @@ Data/
 
 example:
 
-<style type="text/css">
-.tg  {border-collapse:collapse;border-spacing:0;border-color:#ccc;}
-.tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:#ccc;color:#333;background-color:#fff;}
-.tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:#ccc;color:#333;background-color:#f0f0f0;}
-.tg .tg-dc35{background-color:#f9f9f9;border-color:inherit;vertical-align:top}
-.tg .tg-us36{border-color:inherit;vertical-align:top}
-.tg .tg-n1qb{font-size:24px;border-color:inherit;vertical-align:top}
-.tg .tg-7e76{background-color:#f9f9f9;font-size:24px;border-color:inherit;vertical-align:top}
-.tg .tg-z5wk{background-color:#f9f9f9;font-size:24px;border-color:inherit;text-align:center;vertical-align:top}
-</style>
+
 <table class="tg">
+  <style type="text/css">
+  .tg  {border-collapse:collapse;border-spacing:0;border-color:#ccc;}
+  .tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:#ccc;color:#333;background-color:#fff;}
+  .tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:#ccc;color:#333;background-color:#f0f0f0;}
+  .tg .tg-dc35{background-color:#f9f9f9;border-color:inherit;vertical-align:top}
+  .tg .tg-us36{border-color:inherit;vertical-align:top}
+  .tg .tg-n1qb{font-size:24px;border-color:inherit;vertical-align:top}
+  .tg .tg-7e76{background-color:#f9f9f9;font-size:24px;border-color:inherit;vertical-align:top}
+  .tg .tg-z5wk{background-color:#f9f9f9;font-size:24px;border-color:inherit;text-align:center;vertical-align:top}
+  </style>
   <tr>
     <th class="tg-us36">Filename<br></th>
     <th class="tg-us36">body part slides plane<br><br></th>
@@ -1074,7 +1084,7 @@ example:
 <a id='references'></a>
 # References
 
-1Adams MC., Turkington TG., Wilson JM., Wong TZ. (2010). A systematic review of the factors affecting accuracy of SUV measurements. AJR American journal of roentgenology 195:310-320.
+Adams MC., Turkington TG., Wilson JM., Wong TZ. (2010). A systematic review of the factors affecting accuracy of SUV measurements. AJR American journal of roentgenology 195:310-320.
 
 Bennett CM., Miller MB. (2010) How reliable are the results from functional magnetic resonance imaging? Annals of the New York Academy of Sciences 1191:133-155.
 
