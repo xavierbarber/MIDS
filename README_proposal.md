@@ -42,12 +42,6 @@
 
 # 1. Preliminary clarifications
 
-3.4. Tabular files
-3.4.1. Participants description table (Sub-*.tsv)
-3.4.2. Session description table (Sub-*.tsv)
-3.4.3. Scans description table (Sub-<participant_label>_scan.tsv)
-4. References
-
 This specification expands the specification of the brain image data structure (BIDS) to other medical imaging modalities, as well as to include different parts of the body. If you wish to know the context and general guidelines (definitions, units, directory structure, etc.), consult the [BIDS specifications document](https://docs.google.com/document/d/1HFUkAEE-pB-angVcYe6pf_-fVf4sCpOHKesUvfb8Grc)
 
 
