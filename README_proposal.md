@@ -1,7 +1,6 @@
 
-<div class="clearfix" style="padding: 10px; padding-left: 0px">
-<a href="http://bimcv.cipf.es/"><img src="./images/logotipo-fisabio_tauv.png" width="500px" style="text-align:center; display: inline-block;">
-<a href="http://ceib.san.gva.es"><img src="./images/logo_CEIB.png" width="320px" class="pull-right" style="display: inline-block; margin-left: 300px;"></a>
+<div class="clearfix" style="padding: 0px; padding-left: 100px; display: flex; flex-wrap: nowrap; justify-content: space-evenly; align-items:center">
+<a href="http://bimcv.cipf.es/"><img src="https://github.com/BIMCV-CSUSP/MIDS/blob/master/images/logotipo-fisabio_tauv.png?raw=true""./images/logotipo-fisabio_tauv.png" width="300px" style="display: inline-block; "></a><a href="http://ceib.san.gva.es"><img src="https://github.com/BIMCV-CSUSP/MIDS/blob/master/images/logo_CEIB.png?raw=true" width="200px" class="pull-right" style="display: inline-block;"></a><a href="http://www.eurobioimaging.eu/"><img src="http://www.eurobioimaging.eu/sites/all/themes/eurobio/images/euro_bio_imaging_logo.jpg" width="250px" class="center-block" style=" display: inline-block;"></a>
 </div>
 <br></br>
 
@@ -997,3 +996,20 @@ Elmaoğlu, M., & Çelik, A. (2011). MRI handbook: MR physics, patient positionin
 DE ESPAÑA, J. C. I. R. (1999). Ley Orgánica 15/1999, de 13 de diciembre, de Protección de Datos de Carácter Personal. Bol Del Estado, 404
 
 Serrano, J. M. S. (2013). CLOUD CEIB I+ D. Sistema de gestión y extracción de conocimiento de la imágen médica (Doctoral dissertation, Universitat d'Alacant-Universidad de Alicante).
+
+## Code availability.
+
+ All software for building and running the BIMCV and reading metadata of the BIMCV data sets is open source and available at https://github.com/BIMCV-CSUSP/MIDS. The custom scripts used to combine metadata into a MIDS files structure are available at https://github.com/BIMCV-CSUSP/MIDS/tree/master/XNAT2MIDS.
+
+ ## Data availability.
+
+ All data sets described in this paper are available at https://github.com/BIMCV-CSUSP/MIDS/tree/master/data
+
+ ## Acknowledgement.
+
+ The MIDS project was funded by the Regional Ministry of Health (FEDER), and Horizon 2020 Framework Programme of the European Union under grant agreement 688945 (Euro-BioImaging Prep Phase II) Euro Bioimaging WP6. D6.3. Task 6.4.
+
+
+ ## Rights and permissions.
+
+ <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>., which permits use, sharing, adaptation, distribution and reproduction in any medium or format, as long as you give appropriate credit to the original author(s) and the source, provide a link to the Creative Commons license, and indicate if changes were made. The images or other third party material in this article are included in the article's Creative Commons license, unless indicated otherwise in a credit line to the material. If material is not included in the article's Creative Commons license and your intended use is not permitted by statutory regulation or exceeds the permitted use, you will need to obtain permission directly from the copyright holder.
