@@ -35,7 +35,7 @@
 > > >
 > > > 2.4.3. [Scans description table](#scans)
 >
->[4. References](#references)
+>[3. References](#references)
 
 <a id='clarifications'></a>
 
@@ -52,7 +52,7 @@ Terminology that will be used in the following includes:
 +  Session	= a logical grouping of imaging that is consistent across subjects. One session is not limited to one set of scans but rather can be data obtained over several visits that are grouped into one session. Multiple sessions is appropriate when a large group of the subjects follow identical or similar data acquisition steps (often with some sort of intervention in between sessions)
 + Run 	= a non-intermittent period during which data for the subject(s) is continuously being acquired
 + Task 	= instructions (and corresponding stimulus material) that is performed by the subject
-+ Pseudonymization = the processing of personal data in such a way that it can no longer be attributed to an interested party without using additional information, provided that such additional information appears separately and is subject to technical and organizational measures designed to guarantee that personal data are not attributed to an identified or identifiable natural person; PROTECTION OF PERSONAL DATA, 7 European Data Protection Regulation, CHAPTER I General Provisions.
++ Pseudonymization = the processing of personal data in such a way that it can no longer be attributed to an interested party without using additional information, provided that such additional information appears separately and is subject to technical and organizational measures designed to guarantee that personal data are not attributed to an identified or identifiable natural person; [PROTECTION OF PERSONAL DATA](http://www.boe.es/legislacion/codigos/codigo.php?id=055_Proteccion_de_Datos_de_Caracter_Personal&modo=1) page 404, 7 European Data Protection Regulation, CHAPTER I General Provisions.
 + Modalities of medical images = Type of equipment that  acquired the original data used to create the images in this Series. See Section [C.7.3.1.1.1](http://dicom.nema.org/medical/dicom/current/output/chtml/part03/sect_C.7.3.html#sect_C.7.3.1.1.1) for Defined Terms.
 + Body Part = denoting the Defined Terms for Body Part Examined ,Dicom tag (0018,0015), see [Correspondence of Anatomic Region Codes and Body Part Examined DefinedTerms](http://dicom.nema.org/medical/dicom/current/output/chtml/part16/chapter_L.html#chapter_L)
 + Patient Position = specifies the position of the patient relative to the imaging equipment space. This attribute is intended for annotational purposes only. It does not provide an exact mathematical relationship between the patient and the imaging equipment,  tag Dicom, Patient Position (0018,5100) ,  See Section [C.7.3.1.1.2](http://dicom.nema.org/medical/dicom/current/output/chtml/part03/sect_C.7.3.html#sect_C.7.3.1.1.2) in DICOM PS3.3 for Defined Terms and further explanation.
@@ -63,11 +63,11 @@ Terminology that will be used in the following includes:
 # 2. Medical Population Imaging Data Structure
 
 <p style="text-align:justify">
-In order to add to the scientific knowledge, methods that yield reliable and reproducible results must be used. High test-retest reliability of the applied methods is the foundation of research, irrespective of the scientific discipline. It is in the prime interest of every scientist that results are reproducible. While such reproducibility was considered of utmost importance in the positron emitting tomography (PET) field [Adams et al., 2010], the quantitative assessment of reproducibility has largely been neglected in the fMRI community, or as Bennett and Miller described it: “Reliability is not a typical topic of conversation” between fMRI investigators [Bennett and Miller, 2010]. This situation changed significantly in 2016, following the establishment of the Committee on Best Practices in Data Analysis and Sharing ([COBIDAS](www.humanbrainmapping.org/cobidas/)) by the most important neuroimaging society - the Organisation for Human Brain Mapping (OHBM).
+In order to add to the scientific knowledge, methods that yield reliable and reproducible results must be used. High test-retest reliability of the applied methods is the foundation of research, irrespective of the scientific discipline. It is in the prime interest of every scientist that results are reproducible. While such reproducibility was considered of utmost importance in the positron emitting tomography (PET) field [[Adams et al.](https://docs.google.com/document/d/1e3AKhkXPFZhUcS5Vz-ohrJ02FMgWHLBgaS_LDb6CrwU/edit#bookmark=id.6p1utuyr8sq), 2010], the quantitative assessment of reproducibility has largely been neglected in the fMRI community, or as Bennett and Miller described it: “Reliability is not a typical topic of conversation” between fMRI investigators [[Bennett and Miller](https://docs.google.com/document/d/1e3AKhkXPFZhUcS5Vz-ohrJ02FMgWHLBgaS_LDb6CrwU/edit#bookmark=id.4n5oqqim8oa), 2010]. This situation changed significantly in 2016, following the establishment of the Committee on Best Practices in Data Analysis and Sharing ( [COBIDAS](www.humanbrainmapping.org/cobidas/) ) by the most important neuroimaging society - the Organisation for Human Brain Mapping (OHBM).
 </p>
 
 <p style="text-align:justify">
-The objective of BIMCV (Medical Imaging Bank of the Valencia Region) is that all this scientific knowledge be collected in a correct and efficient way. More concretely, all that knowledge refers to imaging data. Finding a way to organize this information is crucial.
+The objective of BIMCV ( [Medical Imaging Bank of the Valencia Region](http://bimcv.cipf.es/) ) is that all this scientific knowledge be collected in a correct and efficient way. More concretely, all that knowledge refers to imaging data. Finding a way to organize this information is crucial.
 </p>
 
 <p style="text-align:justify">
@@ -75,7 +75,7 @@ Currently, distinct forms to store images and medical information exist, but the
 </p>
 
 <p style="text-align:justify">
-The organisational structure is called MIDS (Medical Imaging Data Structure). MIDS is a new standard that contains every type of medical information and images in simple hierarchical folders. It is born as an extension of the standard BIDS (Brain Imaging Data Structure). BIDS [Gorgolewski et al.] is a structure that collects medical brain images, but MIDS pretends to expand this further, and not confine it to brain images. The idea is to create the same structure with brain, spinal, torso, etc images , with Magnetic Resonance, Computed tomography, ecography, etc. This structure will follow the same process regardless of the type and shape of the image.
+The organisational structure is called MIDS (Medical Imaging Data Structure). MIDS is a new standard that contains every type of medical information and images in simple hierarchical folders. It is born as an extension of the standard BIDS (Brain Imaging Data Structure). BIDS [ [Gorgolewski et al.](https://docs.google.com/document/d/1e3AKhkXPFZhUcS5Vz-ohrJ02FMgWHLBgaS_LDb6CrwU/edit#bookmark=id.ocuq84dhvbj0) ] is a structure that collects medical brain images, but MIDS pretends to expand this further, and not confine it to brain images. The idea is to create the same structure with brain, spinal, torso, etc images , with Magnetic Resonance, Computed tomography, ecography, etc. This structure will follow the same process regardless of the type and shape of the image.
 </p>
 <a id='introduction'></a>
 
@@ -86,7 +86,7 @@ Presently, many studies focused on obtaining a dataset of medical images. Since 
 At present, many studies based on obtaining a dataset of medical images for its process of study. The qualitative improvement has been enormous for these studies since its use. Management and control all images and metadata added to them is a extra hard work. Furthermore, during the study, more data is generated where it is necessary to relocate. Each study search the way to organize these data in the way that best suits. This makes it more difficult to understand the data collected and results.
 </p>
 <p style="text-align:justify">
-There are a couple studies that propose a standard to store this type of data. One of them is BIDS ([Brain Imaging Data Structure](http://bids.neuroimaging.io/,[1]). BIDS is a proposed standard to store a magnetic resonance imaging and data in a structural folder hierarchy. The structure is very clear and easy to use. BIDS is supported by several programs and libraries dedicated to the study of medical images (i.e. c-pacs, freesurfer, xnat, BIDSValidator...) and it is often used by researcher groups. In Figure 1, a example of the BIDS structure is presented, the left directory is a folder with dicom images (Mildenberger, Eichelberg & Martin,2002) and the right directory is a BIDS structure.
+There are a couple studies that propose a standard to store this type of data. One of them is BIDS ( [Brain Imaging Data Structure](http://bids.neuroimaging.io/),[1] ). BIDS is a proposed standard to store a magnetic resonance imaging and data in a structural folder hierarchy. The structure is very clear and easy to use. BIDS is supported by several programs and libraries dedicated to the study of medical images (i.e. c-pacs, freesurfer, xnat, BIDSValidator...) and it is often used by researcher groups. In Figure 1, a example of the BIDS structure is presented, the left directory is a folder with dicom images ( [Mildenberger, Eichelberg & Martin](https://scirp.org/reference/ReferencesPapers.aspx?ReferenceID=81885),2002 ) and the right directory is a BIDS structure.
 </p>
 
 <p style="text-align:center">
@@ -99,7 +99,7 @@ figure 1: DICOM to BIDS conversion with the tool Dcm2Bids
 
 <p style="text-align:justify">
 Unfortunately, BIDS only supports MRIs and only brain images. For example, if a project need lumbar MRI, BIDS would not support these images. However, by taking this structure and expanding it, other  imaging techniques can be integrated. For that, MIDS was created.
-Currently, BIDS is a potential standard to store MRI and there is a little difference between BIDS and MIDS. However, MIDS pretends to incorporate, within epidemiological studies based on Population Image (BIMCV), any type of modality of medical images (i.e. Computed Radiography,Computed Tomography, Ultrasound, Mammography, ...).
+Currently, BIDS is a potential standard to store MRI and there is a little difference between BIDS and MIDS. However, MIDS pretends to incorporate, within epidemiological studies based on Population Image (BIMCV), any type of [modality](http://dicom.nema.org/medical/dicom/current/output/chtml/part03/sect_C.7.3.html#sect_C.7.3.1.1.1) of medical images (i.e. Computed Radiography,Computed Tomography, Ultrasound, Mammography, ...).
 </p>
 
 <a id='dirstruc'></a>
@@ -294,7 +294,7 @@ Breakdown of filename keys:
 + rec-\<label\> - denoting which reconstruction was used; “norm” corresponds to normalized images (optional)
 + run-\<index\> - denotes a repetition of identical acquisition with identical scanning parameters
 	(optional)
-+ bp-<BodyPartExamined_label> - ( - optional) denoting the Defined Terms for Body Part Examined ,Dicom tag (0018,0015) , see:  Correspondence of Anatomic Region Codes and Body Part Examined Defined Terms
++ bp-<BodyPartExamined_label> - ( - optional) denoting the Defined Terms for Body Part Examined ,Dicom tag (0018,0015) , see:  [Correspondence of Anatomic Region Codes and Body Part Examined Defined Terms](http://dicom.nema.org/medical/dicom/current/output/chtml/part16/chapter_L.html#chapter_L).
 + vp-<viewPosition_label> which describes the section, view, planes, direction or projection in the acquisition, (- optional).
 Possible labels:
 
@@ -304,10 +304,10 @@ Possible labels:
   Examples by type of medical imaging modality:
 
       - In the case of radiography, the terms for View Position are defined in the tag dicom (0018,5101)
-      - In the case of mammography, the terms for Partial View Description are defined in the tag dicom (0028,1351), See Section C.8.11.7.1.3. And CID 4014 View for Mammography , can include laterality of the region examined. Right = r, Left = l , both (e.g., cleavage) = b, Dicom tag, Image Laterality (0020,0062).
+      - In the case of mammography, the terms for Partial View Description are defined in the tag dicom (0028,1351), See [Section C.8.11.7.1.3.](http://dicom.nema.org/MEDICAL/dicom/2018a/output/chtml/part03/sect_C.8.11.7.html#sect_C.8.11.7.1.3) And [CID 4014 View for Mammography](http://dicom.nema.org/medical/dicom/current/output/chtml/part16/sect_CID_4014.html#table_CID_4014) , can include laterality of the region examined. Right = r, Left = l , both (e.g., cleavage) = b, Dicom tag, Image Laterality (0020,0062).
       - In the case of mri, the plane can be calculated from the DICOM tag: Image Orientation (0020,0037)
 
-+ <modality_Dicom>: Type of equipment that acquired the original data used to create the images in this Series. Dicom tag (0008,0060), See Section C.7.3.1.1.1 in DICOM PS3.3 for Defined Terms.
++ <modality_Dicom>: Type of equipment that acquired the original data used to create the images in this Series. Dicom tag (0008,0060), See [Section C.7.3.1.1.1](http://dicom.nema.org/medical/dicom/current/output/chtml/part03/sect_C.7.3.html#sect_C.7.3.1.1.1) in DICOM PS3.3 for Defined Terms.
 
 <a id='lstu'></a>
 ## 2.3. Longitudinal studies with multiple sessions example
@@ -354,10 +354,10 @@ Data/
 │  │   └── eco
 │  │   │   ¦
 │  │   │   └── ...
-│  │   ├── "others files and folder. OPTIONAL"
-│  │   └── sub-control01_scans.tsv
 │  ├── ses-02
 │  │   ├── ...
+│  ├── "others files and folder. OPTIONAL"
+│  └── sub-control01_scans.tsv
 ├── sub-02
 │   ¦
 │   └── ...
@@ -453,15 +453,15 @@ Anatomical (structural) data acquired for a participant. In brain imaging, the m
   </tr>
 </table>
 <div style='text-align:center;'>
-Table 2:  The modalities currently admitted in BIDS.
+Table 2:  The modalities currently admitted in <a href="https://docs.google.com/document/d/1HFUkAEE-pB-angVcYe6pf_-fVf4sCpOHKesUvfb8Grc/edit#">BIDS</a>.
 </div>
 
 <a id='seq'></a>
 ## 2.3.2. Label sequence_label for MRI
 
-MR structural data can be acquired with different parameter values. To represent said data, the Extension Proposal BIDS 1 ([BEP001](https://docs.google.com/document/d/1QwfHyBzOyFWOLO4u_kkojLpUhW0-4_M7Ubafu9Gf4Gg/edit#)) is used: Structural acquisitions that include multiple contrasts (multiple echo, investment angle, investment time), in this document you can find the keywords and the syntax used.
+MR structural data can be acquired with different parameter values. To represent said data, the Extension Proposal BIDS 1 ( [BEP001](https://docs.google.com/document/d/1QwfHyBzOyFWOLO4u_kkojLpUhW0-4_M7Ubafu9Gf4Gg/edit#) ) is used: Structural acquisitions that include multiple contrasts (multiple echo, investment angle, investment time), in this document you can find the keywords and the syntax used.
 
-Next, Possible sequences of labels describing the sequences used in obtaining images included in BEP001:
+Next, Possible sequences of labels describing the sequences used in obtaining images included in [BEP001](https://docs.google.com/document/d/1QwfHyBzOyFWOLO4u_kkojLpUhW0-4_M7Ubafu9Gf4Gg/edit#):
 
 
 <table class="tg">
@@ -507,7 +507,7 @@ Next, Possible sequences of labels describing the sequences used in obtaining im
   </tr>
 </table>
 <div style='text-align:center;'>
-Table 3:  The sequences currently admitted in BEP001
+Table 3:  The sequences currently admitted in <a href="https://docs.google.com/document/d/1QwfHyBzOyFWOLO4u_kkojLpUhW0-4_M7Ubafu9Gf4Gg/edit#">BEP001</a>.
 </div>
 
 MIDS incorporates the following sequences and techniques:
