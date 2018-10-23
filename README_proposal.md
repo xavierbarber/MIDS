@@ -303,9 +303,9 @@ Possible labels:
 
   Examples by type of medical imaging modality:
 
-      - In the case of radiography, the terms for View Position are defined in the tag dicom (0018,5101)
-      - In the case of mammography, the terms for Partial View Description are defined in the tag dicom (0028,1351), See [Section C.8.11.7.1.3.](http://dicom.nema.org/MEDICAL/dicom/2018a/output/chtml/part03/sect_C.8.11.7.html#sect_C.8.11.7.1.3) And [CID 4014 View for Mammography](http://dicom.nema.org/medical/dicom/current/output/chtml/part16/sect_CID_4014.html#table_CID_4014) , can include laterality of the region examined. Right = r, Left = l , both (e.g., cleavage) = b, Dicom tag, Image Laterality (0020,0062).
-      - In the case of mri, the plane can be calculated from the DICOM tag: Image Orientation (0020,0037)
+    - In the case of radiography, the terms for View Position are defined in the tag dicom (0018,5101)
+    - In the case of mammography, the terms for Partial View Description are defined in the tag dicom (0028,1351), See <a href="http://dicom.nema.org/MEDICAL/dicom/2018a/output/chtml/part03/sect_C.8.11.7.html#sect_C.8.11.7.1.3">Section C.8.11.7.1.3.</a> And <a href="http://dicom.nema.org/medical/dicom/current/output/chtml/part16/sect_CID_4014.html#table_CID_4014">CID 4014 View for Mammography</a> , can include laterality of the region examined. Right = r, Left = l , both (e.g., cleavage) = b, Dicom tag, Image Laterality (0020,0062).
+    - In the case of mri, the plane can be calculated from the DICOM tag: Image Orientation (0020,0037)
 
 + <modality_Dicom>: Type of equipment that acquired the original data used to create the images in this Series. Dicom tag (0008,0060), See [Section C.7.3.1.1.1](http://dicom.nema.org/medical/dicom/current/output/chtml/part03/sect_C.7.3.html#sect_C.7.3.1.1.1) in DICOM PS3.3 for Defined Terms.
 
@@ -981,7 +981,7 @@ example:
 
 
 <a id='references'></a>
-# References
+# 3. References
 
 Adams MC., Turkington TG., Wilson JM., Wong TZ. (2010). A systematic review of the factors affecting accuracy of SUV measurements. AJR American journal of roentgenology 195:310-320.
 
