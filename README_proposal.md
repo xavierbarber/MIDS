@@ -342,12 +342,11 @@ Data/
 │  │   │   └── pwi
 │  │   │       ├── sub-control01_ses-01_bp-brain_vp-ax_pwi.nii.gz
 │  │   │       └── sub-control01_ses-01_bp-brain_vp-ax_pwi.json
-│  │   ├── mg
-│  │   │   ├── Sub-control01_ses-01_bp-breast_vp-cc_mg.nii.gz
-│  │   │   └── Sub-control01_ses-01_bp-breast_vp-mlo_mg.nii.gz
 │  │   ├── rx
 │  │   │   ├── Sub-control01_ses-01_bp-chest_vp-ap_dx.nii.gz
-│  │   │   └── Sub-control01_ses-01_bp-chest_vp-ll_dx.nii.gz
+│  │   │   ├── Sub-control01_ses-01_bp-chest_vp-ll_dx.nii.gz
+│  │   │   ├── Sub-control01_ses-01_bp-breast_vp-cc_mg.nii.gz
+│  │   │   └── Sub-control01_ses-01_bp-breast_vp-mlo_mg.nii.gz
 │  │   ├── ct
 │  │   │   ¦
 │  │   │   └── ...
