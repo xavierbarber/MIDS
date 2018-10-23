@@ -286,7 +286,7 @@ Data/
 </pre>
 </div>
 
-See in Table 2 image modalities supported by MIDS, the relationship of the modalities of medical image with the Dicom modality, and its corresponding label.
+See in Table 5 image modalities supported by MIDS, the relationship of the modalities of medical image with the Dicom modality, and its corresponding label.
 
 Breakdown of filename keys:
 
