@@ -71,11 +71,11 @@ The objective of BIMCV (<a href="http://bimcv.cipf.es/">Medical Imaging Bank of 
 </p>
 
 <p style="text-align:justify">
-Currently, distinct forms to store images and medical information exist, but there is not a standard that indicates how this information should be organized and shared. CEIB’s idea is to use a simple organisation that any researcher can understand the distribution of data.
+Currently, distinct forms to store images and medical information exist, but there is not a standard that indicates how this information should be organized and shared. <a href="http://ceib.san.gva.es/ceib-cs">CEIB’s</a> idea is to use a simple organisation that any researcher can understand the distribution of data.
 </p>
 
 <p style="text-align:justify">
-The organisational structure is called MIDS (Medical Imaging Data Structure). MIDS is a new standard that contains every type of medical information and images in simple hierarchical folders. It is born as an extension of the standard BIDS (Brain Imaging Data Structure). BIDS [<a href="https://docs.google.com/document/d/1e3AKhkXPFZhUcS5Vz-ohrJ02FMgWHLBgaS_LDb6CrwU/edit#bookmark=id.ocuq84dhvbj0">Gorgolewski et al.</a>] is a structure that collects medical brain images, but MIDS pretends to expand this further, and not confine it to brain images. The idea is to create the same structure with brain, spinal, torso, etc images , with Magnetic Resonance, Computed tomography, ecography, etc. This structure will follow the same process regardless of the type and shape of the image.
+The organisational structure is called MIDS (Medical Imaging Data Structure). MIDS pretends to became a new standard that contains every type of medical information and images in simple hierarchical folders. It is born as an extension of the standard BIDS (Brain Imaging Data Structure). BIDS [<a href="https://docs.google.com/document/d/1e3AKhkXPFZhUcS5Vz-ohrJ02FMgWHLBgaS_LDb6CrwU/edit#bookmark=id.ocuq84dhvbj0">Gorgolewski et al.</a>] is a structure that collects medical brain images, but MIDS pretends to expand this further, and not confine it to brain images. The idea is to create the same structure with brain, spinal, torso, etc images , with Magnetic Resonance, Computed tomography, ecography, etc. This structure will follow the same process regardless of the type and shape of the image.
 </p>
 <a id='introduction'></a>
 
@@ -83,7 +83,7 @@ The organisational structure is called MIDS (Medical Imaging Data Structure). MI
 
 <p style="text-align:justify">
 Presently, many studies focused on obtaining a dataset of medical images. Since the use of these datasets, the qualitative improvements have been enormous for these studies. However, the management and control of the images and metadata added to the datasets is an added effort. Furthermore, during the study, more data is generated that needs to be relocated. Each study searchers for a way to organize all the data that best suits it, which makes it more difficult to understand the collected data and results.
-At present, many studies based on obtaining a dataset of medical images for its process of study. The qualitative improvement has been enormous for these studies since its use. Management and control all images and metadata added to them is a extra hard work. Furthermore, during the study, more data is generated where it is necessary to relocate. Each study search the way to organize these data in the way that best suits. This makes it more difficult to understand the data collected and results.
+Nowadays, many studies based on obtaining a dataset of medical images for its process of study. The qualitative improvement has been enormous for these studies since its use. Management and control all images and metadata added to them is a extra hard work. Furthermore, during the study, more data is generated where it is necessary to relocate. Each study search the way to organize these data in the way that best suits. This makes it more difficult to understand the data collected and results.
 </p>
 <p style="text-align:justify">
 There are a couple studies that propose a standard to store this type of data. One of them is BIDS (<a href="http://bids.neuroimaging.io/">Brain Imaging Data Structure</a>,[1] ). BIDS is a proposed standard to store a magnetic resonance imaging and data in a structural folder hierarchy. The structure is very clear and easy to use. BIDS is supported by several programs and libraries dedicated to the study of medical images (i.e. c-pacs, freesurfer, xnat, BIDSValidator...) and it is often used by researcher groups. In Figure 1, a example of the BIDS structure is presented, the left directory is a folder with dicom images (<a href="https://scirp.org/reference/ReferencesPapers.aspx?ReferenceID=81885"> Mildenberger, Eichelberg & Martin</a>,2002 ) and the right directory is a BIDS structure.
@@ -98,8 +98,8 @@ figure 1: DICOM to BIDS conversion with the tool Dcm2Bids
 
 
 <p style="text-align:justify">
-Unfortunately, BIDS only supports MRIs and only brain images. For example, if a project need lumbar MRI, BIDS would not support these images. However, by taking this structure and expanding it, other  imaging techniques can be integrated. For that, MIDS was created.
-Currently, BIDS is a potential standard to store MRI and there is a little difference between BIDS and MIDS. However, MIDS pretends to incorporate, within epidemiological studies based on Population Image (BIMCV), any type of <a href="http://dicom.nema.org/medical/dicom/current/output/chtml/part03/sect_C.7.3.html#sect_C.7.3.1.1.1"> modality </a> of medical images (i.e. Computed Radiography,Computed Tomography, Ultrasound, Mammography, ...).
+BIDS only supports MRIs and only brain images. For example, if a project need lumbar MRI, BIDS would not support these images. However, by taking this structure and expanding it, other  imaging techniques can be integrated. For that, MIDS was created.
+Currently, BIDS is a potential standard to store MRI and there is a little difference between BIDS and MIDS. However, MIDS pretends to incorporate, within epidemiological studies based on population medical imaging data (BIMCV), any type of <a href="http://dicom.nema.org/medical/dicom/current/output/chtml/part03/sect_C.7.3.html#sect_C.7.3.1.1.1"> modality </a> of medical images (i.e. Computed Radiography,Computed Tomography, Ultrasound, Mammography, ...).
 </p>
 
 <a id='dirstruc'></a>
@@ -290,12 +290,13 @@ See in Table 5 image modalities supported by MIDS, the relationship of the modal
 
 Breakdown of filename keys:
 
-+ acq-\<label\> - denoting which set of acquisition parameters was used ( - optional)
-+ rec-\<label\> - denoting which reconstruction was used; “norm” corresponds to normalized images (optional)
++ acq-\<label\> - denoting which set of acquisition parameters was used (defined in BIDS - optional).
++ rec-\<label\> - denoting which reconstruction was used; “norm” corresponds to normalized images (defined in BIDS - optional).
 + run-\<index\> - denotes a repetition of identical acquisition with identical scanning parameters
-	(optional)
-+ bp-<BodyPartExamined_label> - ( - optional) denoting the Defined Terms for Body Part Examined ,Dicom tag (0018,0015) , see:  [Correspondence of Anatomic Region Codes and Body Part Examined Defined Terms](http://dicom.nema.org/medical/dicom/current/output/chtml/part16/chapter_L.html#chapter_L).
-+ vp-<viewPosition_label> which describes the section, view, planes, direction or projection in the acquisition, (- optional).
+	(defined in BIDS - optional).
++ bp-<BodyPartExamined_label> - denoting the Defined Terms for Body Part Examined ,Dicom tag (0018,0015) , see:  [Correspondence of Anatomic Region Codes and Body Part Examined Defined Terms](http://dicom.nema.org/medical/dicom/current/output/chtml/part16/chapter_L.html#chapter_L) (defined in MIDS - optional).
++ vp-<viewPosition_label> which describes the section, view, planes, direction or projection in the acquisition, (defined in MIDS - optional).
+
 Possible labels:
 
     - Planes:  sag = Sagittal plane, cor = Coronal plane, ax = Axial plane.
@@ -320,10 +321,21 @@ This is an example of the folder and file structure. Because there is only one s
 Data/
 ├── sub-01
 │  ├──  ses-01
+│  │   ├── anat
+│  │   │   ├── sub-01_ses-01_T1w.nii.gz
+│  │   │   └── sub-01_ses-01_T1w.json
+│  │   ├── dwi
+│  │   │   ├── sub-control01_ses-01_dwi.nii.gz
+│  │   │   ├── sub-control01_ses-01_dwi.bval
+│  │   │   └── sub-control01_ses-01_dwi.bvec
+│  │   ├── fmap
+│  │   │   ├── sub-control01_ses-01_phasediff.nii.gz
+│  │   │   ├── sub-control01_ses-01_phasediff.json
+│  │   │   └── sub-control01_ses-01_magnitude1.nii.gz
+│  │   └── pwi
+│  │   │   ├── sub-control01_ses-01_pwi.nii.gz
+│  │   │   └── sub-control01_ses-01_pwi.json
 │  │   ├── rm
-│  │   │   ├── anat
-│  │   │   │   ├── sub-01_ses-01_bp-lsspine_vp-ax_T1w.nii.gz
-│  │   │   │   └── sub-01_ses-01_bp-lsspine_vp-ax_T1w.json
 │  │   │   ├── func
 │  │   │   │   ├── sub-01_ses-01_task-nback_bp-heart_vp-fourChamber_bold.nii.gz
 │  │   │   │   ├── sub-01_ses-01_task-nback_bp-heart_vp-fourChamber_bold.json
@@ -331,17 +343,6 @@ Data/
 │  │   │   │   ├── sub-01_ses-01_task-nback_bp-heart_vp-fourChamber_physio.tsv.gz
 │  │   │   │   ├── sub-01_ses-01_task-nback_bp-heart_vp-fourChamber_physio.json
 │  │   │   │   └── sub-01_ses-01_task-nback_bp-heart_vp-fourChamber_sbref.nii.gz
-│  │   │   ├── dwi
-│  │   │   │   ├── sub-control01_ses-01_bp-brain_vp-ax_dwi.nii.gz
-│  │   │   │   ├── sub-control01_ses-01_bp-brain_vp-ax_dwi.bval
-│  │   │   │   └── sub-control01_ses-01_bp-brain_vp-ax_dwi.bvec
-│  │   │   ├── fmap
-│  │   │   │   ├── sub-control01_ses-01_bp-brain_vp-sag_phasediff.nii.gz
-│  │   │   │   ├── sub-control01_ses-01_bp-brain_vp-sag_phasediff.json
-│  │   │   │   └── sub-control01_ses-01_bp-brain_vp-sag_magnitude1.nii.gz
-│  │   │   └── pwi
-│  │   │       ├── sub-control01_ses-01_bp-brain_vp-ax_pwi.nii.gz
-│  │   │       └── sub-control01_ses-01_bp-brain_vp-ax_pwi.json
 │  │   ├── rx
 │  │   │   ├── Sub-control01_ses-01_bp-chest_vp-ap_dx.nii.gz
 │  │   │   ├── Sub-control01_ses-01_bp-chest_vp-ll_dx.nii.gz
@@ -759,7 +760,7 @@ Data/
 
 This file is REQUIRED. The purpose of this file is to describe properties of the participants such as age, handedness, sex, etc. In the case of single session studies, this file has one compulsory column participant_id that consists of sub-<participant_label>, followed by a list of optional columns describing participants. Each participant needs to be described by one and only one row.
 
-The columns of the participants description table stored in “participants.Tsv” are:
+The columns of the participants description table stored in “participants.tsv” are:
 
 
 <table class="tg">
@@ -856,7 +857,7 @@ The columns of the session description table stored in “sub-\<tparticipant_lab
   </tr>
   <tr>
     <td class="tg-yw4l">ICD version<br><br></td>
-    <td class="tg-yw4l">REQUIRED if “all diagnostics” or “all procedures” are filled. The ICD is the acronym of the “International Classification of Diseases”.  We currently use the electronic version eCIE10ES, corresponding to the Spanish version<br><br>You can check the current classification in: <a href="https://eciemaps.msssi.gob.es/ecieMaps/browser/metabuscador.html">Electronic edition search engine of the ICD-10-ES.</a></br> <br>For more information: <a href="http://www.who.int/classifications/icd/en/">Classification of Diseases (ICD), World Health Organization. </a></br></td>
+    <td class="tg-yw4l">REQUIRED if “all diagnostics” or “all procedures” are filled. The ICD is the acronym of the “International Classification of Diseases”.  We currently use the electronic version CIE10ES, corresponding to the Spanish version<br><br>You can check the current classification in: <a href="https://eciemaps.msssi.gob.es/ecieMaps/browser/metabuscador.html">Electronic edition search engine of the ICD-10-ES.</a></br> <br>For more information: <a href="http://www.who.int/classifications/icd/en/">Classification of Diseases (ICD), World Health Organization. </a></br></td>
   </tr>
   <tr>
     <td class="tg-b7b8">All diagnostics<br></td>
@@ -864,7 +865,7 @@ The columns of the session description table stored in “sub-\<tparticipant_lab
   </tr>
   <tr>
     <td class="tg-yw4l">All procedures<br></td>
-    <td class="tg-yw4l">OPTIONAL. Tags or list of tags of the procedures in ICD version represented during recognition.<br><br>(e.g.[[BR39ZZZ],[0BJ08ZZ],[BW25Y0Z],[BR39ZZZ]], represents, magnetic resonance image without contrast to the lumbar spine and other secondary probes)<br><br><br><br><br><br></td>
+    <td class="tg-yw4l">OPTIONAL. Tags or list of tags of the procedures in ICD version represented during recognition.<br><br>(e.g.[[BR39ZZZ],[0BJ08ZZ],[BW25Y0Z],[BR39ZZZ]], represents, magnetic resonance image without contrast in lumbar spine and other secondary probes)<br><br><br><br><br><br></td>
   </tr>
   <tr>
     <td class="tg-rm6r">...<br></td>
@@ -1002,11 +1003,11 @@ Serrano, J. M. S. (2013). CLOUD CEIB I+ D. Sistema de gestión y extracción de 
 
  ## Data availability.
 
- All data sets described in this paper are available at https://github.com/BIMCV-CSUSP/MIDS/tree/master/data
+ All data sets described in this proposal are available at https://github.com/BIMCV-CSUSP/MIDS/tree/master/data
 
  ## Acknowledgement.
 
- The MIDS project was funded by the Regional Ministry of Health (FEDER), and Horizon 2020 Framework Programme of the European Union under grant agreement 688945 (Euro-BioImaging Prep Phase II) Euro Bioimaging WP6. D6.3. Task 6.4.
+ The MIDS project was funded by the Regional Ministry of Health in Valencia Region (FEDER), and Horizon 2020 Framework Programme of the European Union under grant agreement 688945 (Euro-BioImaging Prep Phase II) Euro Bioimaging WP6. D6.3. Task 6.4.
 
 
  ## Rights and permissions.
