@@ -63,7 +63,7 @@ Terminology that will be used in the following includes:
 # 2. Medical Population Imaging Data Structure
 
 <p style="text-align:justify">
-In order to add to the scientific knowledge, methods that yield reliable and reproducible results must be used. High test-retest reliability of the applied methods is the foundation of research, irrespective of the scientific discipline. It is in the prime interest of every scientist that results are reproducible. While such reproducibility was considered of utmost importance in the positron emitting tomography (PET) field [<a href="https://docs.google.com/document/d/1e3AKhkXPFZhUcS5Vz-ohrJ02FMgWHLBgaS_LDb6CrwU/edit#bookmark=id.6p1utuyr8sq">Adams et al.</a>, 2010], the quantitative assessment of reproducibility has largely been neglected in the fMRI community, or as Bennett and Miller described it: “Reliability is not a typical topic of conversation” between fMRI investigators [<a href="https://docs.google.com/document/d/1e3AKhkXPFZhUcS5Vz-ohrJ02FMgWHLBgaS_LDb6CrwU/edit#bookmark=id.4n5oqqim8oa">Bennett and Miller</a>, 2010]. This situation changed significantly in 2016, following the establishment of the Committee on Best Practices in Data Analysis and Sharing (<a href="www.humanbrainmapping.org/cobidas/">COBIDAS</a>) by the most important neuroimaging society - the Organisation for Human Brain Mapping (OHBM).
+In order to add to the scientific knowledge, methods that yield reliable and reproducible results must be used. High test-retest reliability of the applied methods is the foundation of research, irrespective of the scientific discipline. It is in the prime interest of every scientist that results are reproducible. While such reproducibility was considered of utmost importance in the positron emitting tomography (PET) field [<a href="https://docs.google.com/document/d/1e3AKhkXPFZhUcS5Vz-ohrJ02FMgWHLBgaS_LDb6CrwU/edit#bookmark=id.6p1utuyr8sq">Adams et al.</a>, 2010], the quantitative assessment of reproducibility has largely been neglected in the fMRI community, or as Bennett and Miller described it: “Reliability is not a typical topic of conversation” between fMRI investigators [<a href="https://docs.google.com/document/d/1e3AKhkXPFZhUcS5Vz-ohrJ02FMgWHLBgaS_LDb6CrwU/edit#bookmark=id.4n5oqqim8oa">Bennett and Miller</a>, 2010]. This situation changed significantly in 2016, following the establishment of the Committee on Best Practices in Data Analysis and Sharing (<a href="https://www.humanbrainmapping.org/i4a/pages/index.cfm?pageid=3728">COBIDAS</a>) by the most important neuroimaging society - the Organisation for Human Brain Mapping (OHBM).
 </p>
 
 <p style="text-align:justify">
@@ -86,7 +86,7 @@ Presently, many studies focused on obtaining a dataset of medical images. Since 
 Nowadays, many studies based on obtaining a dataset of medical images for its process of study. The qualitative improvement has been enormous for these studies since its use. Management and control all images and metadata added to them is a extra hard work. Furthermore, during the study, more data is generated where it is necessary to relocate. Each study search the way to organize these data in the way that best suits. This makes it more difficult to understand the data collected and results.
 </p>
 <p style="text-align:justify">
-There are a couple studies that propose a standard to store this type of data. One of them is BIDS (<a href="http://bids.neuroimaging.io/">Brain Imaging Data Structure</a>,[1] ). BIDS is a proposed standard to store a magnetic resonance imaging and data in a structural folder hierarchy. The structure is very clear and easy to use. BIDS is supported by several programs and libraries dedicated to the study of medical images (i.e. c-pacs, freesurfer, xnat, BIDSValidator...) and it is often used by researcher groups. In Figure 1, a example of the BIDS structure is presented, the left directory is a folder with dicom images (<a href="https://scirp.org/reference/ReferencesPapers.aspx?ReferenceID=81885"> Mildenberger, Eichelberg & Martin</a>,2002 ) and the right directory is a BIDS structure.
+There are a couple studies that propose a standard to store this type of data. One of them is BIDS (<a href="http://bids.neuroimaging.io/">Brain Imaging Data Structure</a>,[1] ). BIDS is a proposed standard to store a magnetic resonance imaging and data in a structural folder hierarchy. The structure is very clear and easy to use. BIDS is supported by several programs and libraries dedicated to the study of medical images (i.e. c-pacs, freesurfer, xnat, BIDSValidator...) and it is often used by researcher groups. In Figure 1, a example of the BIDS structure is presented, the left directory is a folder with dicom images (<a href="https://www.scirp.org/reference/ReferencesPapers.aspx?ReferenceID=81885"> Mildenberger, Eichelberg & Martin</a>,2002 ) and the right directory is a BIDS structure.
 </p>
 
 <p style="text-align:center">
@@ -399,7 +399,7 @@ Anatomical (structural) data acquired for a participant. In brain imaging, the m
   <tr>
     <td class="tg-dc35">T1 Rho map<br></td>
     <td class="tg-abip">T1rho<br></td>
-    <td class="tg-dc35">Quantitative T1rho brain imaging <br><a href="http://www.ncbi.nlm.nih.gov/pubmed/24474423)">[URL 1]</a> and <a href="http://www.ncbi.nlm.nih.gov/pmc/articles/PMC4346383/)">[URL 2]</a><br></td>
+    <td class="tg-dc35">Quantitative T1rho brain imaging <br><a href="http://www.ncbi.nlm.nih.gov/pubmed/24474423">[URL 1]</a> and <a href="http://www.ncbi.nlm.nih.gov/pmc/articles/PMC4346383/">[URL 2]</a><br></td>
   </tr>
   <tr>
     <td class="tg-us36">T1 map<br></td>
@@ -527,12 +527,12 @@ MIDS incorporates the following sequences and techniques:
   <tr>
     <td class="tg-us36">HASTE/SS-FSE<br></td>
     <td class="tg-c3ow">haste</td>
-    <td class="tg-us36"><a href="http://mriquestions.com/hastess-fse.html)">SSFSE or HASTE</a> sequence is one of the ultrafast sequences and it enables us to<br>acquire whole MR data (k-space) in a single rf excitation or single shot.<br><br><br><br></td>
+    <td class="tg-us36"><a href="http://mriquestions.com/hastess-fse.html">SSFSE or HASTE</a> sequence is one of the ultrafast sequences and it enables us to<br>acquire whole MR data (k-space) in a single rf excitation or single shot.<br><br><br><br></td>
   </tr>
   <tr>
     <td class="tg-dc35">Magnetization transfer<br></td>
     <td class="tg-abip">T1mt, T2mt<br></td>
-    <td class="tg-dc35">Magnetization transfer imaging (<a href="http://mriquestions.com/mt-imagingcontrast.html)">MTI</a>) is a technique by which radiofrequency (RF) energy is applied exclusively to the bound pool using specially designed MT pulse(s).<br><br><br>The relative difference in signal between two adjacent tissues (A and B) is known as magnetization transfer contrast (MTC).<br><br><br><br><br></td>
+    <td class="tg-dc35">Magnetization transfer imaging (<a href="http://mriquestions.com/mt-imagingcontrast.html">MTI</a>) is a technique by which radiofrequency (RF) energy is applied exclusively to the bound pool using specially designed MT pulse(s).<br><br><br>The relative difference in signal between two adjacent tissues (A and B) is known as magnetization transfer contrast (MTC).<br><br><br><br><br></td>
   </tr>
 </table>
 <div style='text-align:center;'>
