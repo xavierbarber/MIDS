@@ -67,7 +67,7 @@ In order to add to the scientific knowledge, methods that yield reliable and rep
 </p>
 
 <p style="text-align:justify">
-The objective of BIMCV (<a href="http://bimcv.cipf.es/">Medical Imaging Bank of the Valencia Region</a>) is the data curationproposal from clinical environment. In this way, all this scientific knowledge be collected in a correct and efficient way. More concretely, all that knowledge refers to imaging data. Finding a way to organize this information is crucial.
+The objective of BIMCV (<a href="http://bimcv.cipf.es/">Medical Imaging Bank of the Valencia Region</a>) is the data curation proposal from clinical environment. In this way, all this scientific knowledge be collected in a correct and efficient way. More concretely, all that knowledge refers to imaging data. Finding a way to organize this information is crucial.
 </p>
 
 <p style="text-align:justify">
