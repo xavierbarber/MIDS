@@ -774,7 +774,7 @@ The columns of the participants description table stored in “participants.tsv�
   </tr>
   <tr>
     <td class="tg-yw4l">Health area<br></td>
-    <td class="tg-yw4l">OPTIONAL. The Health Area is the administrative district that groups a group of health centers and primary care professionals under their organizational and functional dependency.<br>You can combine data from all sites/centers into one dataset. To identify which site each subjects comes from; in this case, it lists all health centers in which a patient has had a medical image acquired.<br><br>See: <a href="http://www.msc.es/ciudadanos/prestaciones/centrosServiciosSNS/hospitales/introduccionCentro.htm">Basic information of the primary care centers available to the National Health System, Spain.</a> <br></td>
+    <td class="tg-yw4l">OPTIONAL. The Health Area is the administrative district that groups a group of health centers and primary care professionals under their organizational and functional dependency.<br>You can combine data from all sites/centers into one dataset. To identify which site each subjects comes from; in this case, it lists all health centers in which a patient has had a medical image acquired.<br><br>See: <a href="http://www.mscbs.gob.es/ciudadanos/prestaciones/centrosServiciosSNS/hospitales/introduccionCentro.htm">Basic information of the primary care centers available to the National Health System, Spain.</a> <br></td>
   </tr>
   <tr>
     <td class="tg-b7b8">Modality Dicom<br></td>
@@ -857,7 +857,7 @@ The columns of the session description table stored in “sub-\<tparticipant_lab
   </tr>
   <tr>
     <td class="tg-yw4l">ICD version<br><br></td>
-    <td class="tg-yw4l">REQUIRED if “all diagnostics” or “all procedures” are filled. The ICD is the acronym of the “International Classification of Diseases”.  We currently use the electronic version CIE10ES, corresponding to the Spanish version<br><br>You can check the current classification in: <a href="https://eciemaps.msssi.gob.es/ecieMaps/browser/metabuscador.html">Electronic edition search engine of the ICD-10-ES.</a></br> <br>For more information: <a href="http://www.who.int/classifications/icd/en/">Classification of Diseases (ICD), World Health Organization. </a></br></td>
+    <td class="tg-yw4l">REQUIRED if “all diagnostics” or “all procedures” are filled. The ICD is the acronym of the “International Classification of Diseases”.  We currently use the electronic version CIE10ES, corresponding to the Spanish version<br><br>You can check the current classification in: <a href="https://eciemaps.mscbs.gob.es/ecieMaps/browser/metabuscador.html">Electronic edition search engine of the ICD-10-ES.</a></br> <br>For more information: <a href="http://www.who.int/classifications/icd/en/">Classification of Diseases (ICD), World Health Organization. </a></br></td>
   </tr>
   <tr>
     <td class="tg-b7b8">All diagnostics<br></td>
