@@ -52,16 +52,16 @@ Terminology that will be used in the following includes:
 +  <span style="background-color:#aaddaa">Session</span>	= a logical grouping of imaging that is consistent across subjects. One session is not limited to one set of scans but rather can be data obtained over several visits that are grouped into one session. Multiple sessions is appropriate when a large group of the subjects follow identical or similar data acquisition steps (often with some sort of intervention in between sessions)
 + <span style="background-color:#aaddaa">Run</span>	= a non-intermittent period during which data for the subject(s) is continuously being acquired
 + <span style="background-color:#aaddaa">Task</span>	= instructions (and corresponding stimulus material) that is performed by the subject
-+ <span style="background-color:#bbddff">Pseudonymization</span> = the processing of personal data in such a way that it can no longer be attributed to an interested party without using additional information, provided that such additional information appears separately and is subject to technical and organizational measures designed to guarantee that personal data are not attributed to an identified or identifiable natural person; [PROTECTION OF PERSONAL DATA](http://www.boe.es/legislacion/codigos/codigo.php?id=055_Proteccion_de_Datos_de_Caracter_Personal&modo=1) page 404, 7 European Data Protection Regulation, CHAPTER I General Provisions.
-+ <span style="background-color:#bbddff">Modalities of medical images</span> = Type of equipment that  acquired the original data used to create the images in this Series. See Section [C.7.3.1.1.1](http://dicom.nema.org/medical/dicom/current/output/chtml/part03/sect_C.7.3.html#sect_C.7.3.1.1.1) for Defined Terms.
-+ <span style="background-color:#bbddff">Body Part</span> = denoting the Defined Terms for Body Part Examined ,Dicom tag (0018,0015), see [Correspondence of Anatomic Region Codes and Body Part Examined DefinedTerms](http://dicom.nema.org/medical/dicom/current/output/chtml/part16/chapter_L.html#chapter_L)
-+ <span style="background-color:#bbddff">Patient Position</span> = specifies the position of the patient relative to the imaging equipment space. This attribute is intended for annotational purposes only. It does not provide an exact mathematical relationship between the patient and the imaging equipment,  tag Dicom, Patient Position (0018,5100) ,  See Section [C.7.3.1.1.2](http://dicom.nema.org/medical/dicom/current/output/chtml/part03/sect_C.7.3.html#sect_C.7.3.1.1.2) in DICOM PS3.3 for Defined Terms and further explanation.
-<p><small>
-<span style="background-color:#aaddaa">Background color</span>: This terminology is included with respect to the  BIDS terminilogy.
-<span style="background-color:#bbddff">Background color</span>: This terminology is new with respect to the  BIDS terminilogy.
-</small></p>
-<a id='mids'></a>
++ 💡<span style="background-color:#bbddff">Pseudonymization</span> = the processing of personal data in such a way that it can no longer be attributed to an interested party without using additional information, provided that such additional information appears separately and is subject to technical and organizational measures designed to guarantee that personal data are not attributed to an identified or identifiable natural person; [PROTECTION OF PERSONAL DATA](http://www.boe.es/legislacion/codigos/codigo.php?id=055_Proteccion_de_Datos_de_Caracter_Personal&modo=1) page 404, 7 European Data Protection Regulation, CHAPTER I General Provisions.
++ 💡<span style="background-color:#bbddff">Modalities of medical images</span> = Type of equipment that  acquired the original data used to create the images in this Series. See Section [C.7.3.1.1.1](http://dicom.nema.org/medical/dicom/current/output/chtml/part03/sect_C.7.3.html#sect_C.7.3.1.1.1) for Defined Terms.
++ 💡<span style="background-color:#bbddff">Body Part</span> = denoting the Defined Terms for Body Part Examined ,Dicom tag (0018,0015), see [Correspondence of Anatomic Region Codes and Body Part Examined DefinedTerms](http://dicom.nema.org/medical/dicom/current/output/chtml/part16/chapter_L.html#chapter_L)
++ 💡<span style="background-color:#bbddff">Patient Position</span> = specifies the position of the patient relative to the imaging equipment space. This attribute is intended for annotational purposes only. It does not provide an exact mathematical relationship between the patient and the imaging equipment,  tag Dicom, Patient Position (0018,5100) ,  See Section [C.7.3.1.1.2](http://dicom.nema.org/medical/dicom/current/output/chtml/part03/sect_C.7.3.html#sect_C.7.3.1.1.2) in DICOM PS3.3 for Defined Terms and further explanation.
 
+<p><small>
+<span style="background-color:#bbddff">💡</span>: This terminology is new with respect to the  BIDS terminilogy.
+</small></p>
+
+<a id='mids'></a>
 # 2. Medical Population Imaging Data Structure
 
 <p style="text-align:justify">
