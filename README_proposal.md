@@ -767,8 +767,8 @@ The columns of the participants description table stored in “participants.tsv�
 
 <table class="tg">
   <tr>
-    <th class="tg-us36">Participant</th>
-    <th class="tg-c3ow">REQUIRED. Tag for a patient in MIDS. Cases where the pseudonymization is a long and confusing identification are possible. This would make it necessary to generate a more compact identifier (Participant)<br></th>
+    <td class="tg-us36">Participant</td>
+    <td class="tg-c3ow">REQUIRED. Tag for a patient in MIDS. Cases where the pseudonymization is a long and confusing identification are possible. This would make it necessary to generate a more compact identifier (Participant)<br></td>
   </tr>
   <tr>
     <td class="tg-b7b8">ID Pseudonymization<br></td>
@@ -852,8 +852,8 @@ The columns of the session description table stored in “sub-\<tparticipant_lab
 
 <table class="tg">
   <tr>
-    <th class="tg-us36">Session<br>	<br><br></th>
-    <th class="tg-us36">REQUIRED.<br></th>
+    <td class="tg-us36">Session<br>	<br><br></td>
+    <td class="tg-us36">REQUIRED.<br></td>
   </tr>
   <tr>
     <td class="tg-b7b8">Age</td>
