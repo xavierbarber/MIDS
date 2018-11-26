@@ -48,16 +48,18 @@ The keywords "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SH
 
 Terminology that will be used in the following includes:
 
-+  Subject	= human being (or phantom, etc) from whom the data is being acquired
-+  Session	= a logical grouping of imaging that is consistent across subjects. One session is not limited to one set of scans but rather can be data obtained over several visits that are grouped into one session. Multiple sessions is appropriate when a large group of the subjects follow identical or similar data acquisition steps (often with some sort of intervention in between sessions)
-+ Run 	= a non-intermittent period during which data for the subject(s) is continuously being acquired
-+ Task 	= instructions (and corresponding stimulus material) that is performed by the subject
-+ Pseudonymization = the processing of personal data in such a way that it can no longer be attributed to an interested party without using additional information, provided that such additional information appears separately and is subject to technical and organizational measures designed to guarantee that personal data are not attributed to an identified or identifiable natural person; [PROTECTION OF PERSONAL DATA](http://www.boe.es/legislacion/codigos/codigo.php?id=055_Proteccion_de_Datos_de_Caracter_Personal&modo=1) page 404, 7 European Data Protection Regulation, CHAPTER I General Provisions.
-+ Modalities of medical images = Type of equipment that  acquired the original data used to create the images in this Series. See Section [C.7.3.1.1.1](http://dicom.nema.org/medical/dicom/current/output/chtml/part03/sect_C.7.3.html#sect_C.7.3.1.1.1) for Defined Terms.
-+ Body Part = denoting the Defined Terms for Body Part Examined ,Dicom tag (0018,0015), see [Correspondence of Anatomic Region Codes and Body Part Examined DefinedTerms](http://dicom.nema.org/medical/dicom/current/output/chtml/part16/chapter_L.html#chapter_L)
-+ Patient Position = specifies the position of the patient relative to the imaging equipment space. This attribute is intended for annotational purposes only. It does not provide an exact mathematical relationship between the patient and the imaging equipment,  tag Dicom, Patient Position (0018,5100) ,  See Section [C.7.3.1.1.2](http://dicom.nema.org/medical/dicom/current/output/chtml/part03/sect_C.7.3.html#sect_C.7.3.1.1.2) in DICOM PS3.3 for Defined Terms and further explanation.
-
-
++  <span style="background-color:#aaddaa"> Subject</span> = human being (or animals, etc) from whom the data is being acquired
++  <span style="background-color:#aaddaa">Session</span>	= a logical grouping of imaging that is consistent across subjects. One session is not limited to one set of scans but rather can be data obtained over several visits that are grouped into one session. Multiple sessions is appropriate when a large group of the subjects follow identical or similar data acquisition steps (often with some sort of intervention in between sessions)
++ <span style="background-color:#aaddaa">Run</span>	= a non-intermittent period during which data for the subject(s) is continuously being acquired
++ <span style="background-color:#aaddaa">Task</span>	= instructions (and corresponding stimulus material) that is performed by the subject
++ <span style="background-color:#bbddff">Pseudonymization</span> = the processing of personal data in such a way that it can no longer be attributed to an interested party without using additional information, provided that such additional information appears separately and is subject to technical and organizational measures designed to guarantee that personal data are not attributed to an identified or identifiable natural person; [PROTECTION OF PERSONAL DATA](http://www.boe.es/legislacion/codigos/codigo.php?id=055_Proteccion_de_Datos_de_Caracter_Personal&modo=1) page 404, 7 European Data Protection Regulation, CHAPTER I General Provisions.
++ <span style="background-color:#bbddff">Modalities of medical images</span> = Type of equipment that  acquired the original data used to create the images in this Series. See Section [C.7.3.1.1.1](http://dicom.nema.org/medical/dicom/current/output/chtml/part03/sect_C.7.3.html#sect_C.7.3.1.1.1) for Defined Terms.
++ <span style="background-color:#bbddff">Body Part</span> = denoting the Defined Terms for Body Part Examined ,Dicom tag (0018,0015), see [Correspondence of Anatomic Region Codes and Body Part Examined DefinedTerms](http://dicom.nema.org/medical/dicom/current/output/chtml/part16/chapter_L.html#chapter_L)
++ <span style="background-color:#bbddff">Patient Position</span> = specifies the position of the patient relative to the imaging equipment space. This attribute is intended for annotational purposes only. It does not provide an exact mathematical relationship between the patient and the imaging equipment,  tag Dicom, Patient Position (0018,5100) ,  See Section [C.7.3.1.1.2](http://dicom.nema.org/medical/dicom/current/output/chtml/part03/sect_C.7.3.html#sect_C.7.3.1.1.2) in DICOM PS3.3 for Defined Terms and further explanation.
+<p><small>
+<span style="background-color:#aaddaa">Background color</span>: This terminology is included with respect to the  BIDS terminilogy.
+<span style="background-color:#bbddff">Background color</span>: This terminology is new with respect to the  BIDS terminilogy.
+</small></p>
 <a id='mids'></a>
 
 # 2. Medical Population Imaging Data Structure
@@ -75,7 +77,7 @@ Currently, distinct forms to store images and medical information exist, but the
 </p>
 
 <p style="text-align:justify">
-The organisational structure is called MIDS (Medical Imaging Data Structure). MIDS pretends to became a new standard that contains every type of medical information and images in simple hierarchical folders. It is born as an extension of the standard BIDS (Brain Imaging Data Structure). BIDS [<a href="https://docs.google.com/document/d/1e3AKhkXPFZhUcS5Vz-ohrJ02FMgWHLBgaS_LDb6CrwU/edit#bookmark=id.ocuq84dhvbj0">Gorgolewski et al.</a>] is a structure that collects medical brain images, but MIDS pretends to expand this further, and not confine it to brain images. The idea is to create the same structure with brain, spinal, torso, etc images , with Magnetic Resonance, Computed tomography, ecography, etc. This structure will follow the same process regardless of the type and shape of the image.
+The organisational structure is called MIDS (Medical Imaging Data Structure). MIDS aspire to became a new standard that contains every type of medical information and images in simple hierarchical folders. It is born as an extension of the standard BIDS (Brain Imaging Data Structure). BIDS [<a href="https://docs.google.com/document/d/1e3AKhkXPFZhUcS5Vz-ohrJ02FMgWHLBgaS_LDb6CrwU/edit#bookmark=id.ocuq84dhvbj0">Gorgolewski et al.</a>] is a structure that collects medical brain images, but MIDS aspire to expand this further, and not confine it to brain images. The idea is to create the same structure with brain, spinal, torso, etc images , with Magnetic Resonance, Computed tomography, ecography, etc. This structure will follow the same process regardless of the type and shape of the image.
 </p>
 <a id='introduction'></a>
 
@@ -99,7 +101,7 @@ figure 1: DICOM to BIDS conversion with the tool Dcm2Bids
 
 <p style="text-align:justify">
 BIDS only supports MRIs and only brain images. For example, if a project need lumbar MRI, BIDS would not support these images. However, by taking this structure and expanding it, other  imaging techniques can be integrated. For that, MIDS was created.
-Currently, BIDS is a potential standard to store MRI and there is a little difference between BIDS and MIDS. However, MIDS pretends to incorporate, within epidemiological studies based on population medical imaging data (BIMCV), any type of <a href="http://dicom.nema.org/medical/dicom/current/output/chtml/part03/sect_C.7.3.html#sect_C.7.3.1.1.1"> modality </a> of medical images (i.e. Computed Radiography,Computed Tomography, Ultrasound, Mammography, ...).
+Currently, BIDS is a potential standard to store MRI and there is a little difference between BIDS and MIDS. However, MIDS aspire to incorporate, within epidemiological studies based on population medical imaging data (BIMCV), any type of <a href="http://dicom.nema.org/medical/dicom/current/output/chtml/part03/sect_C.7.3.html#sect_C.7.3.1.1.1"> modality </a> of medical images (i.e. Computed Radiography,Computed Tomography, Ultrasound, Mammography, ...).
 </p>
 
 <a id='dirstruc'></a>
@@ -114,7 +116,7 @@ Below is the directory hierarchy<sup id="a1">[1](#f1)</sup> provided by BIDS sta
 <pre>
 <code>
 Data/
-├── sub-&ltparticipant_label&gt[_ses-&ltsesion-label&gt]
+├── sub-&ltparticipant_label&gt[/ses-&ltsesion-label&gt]
 ├── [code/]
 ├── [derivatives/]
 ├── [stimuli/]
@@ -132,9 +134,9 @@ This template keeps the tags used in BIDS, in the cases of brain MRI:
 <pre>
 <code>
 Data/
-└──sub-&ltparticipant_label&gt[_ses-&ltsesion-label&gt]
+└──sub-&ltparticipant_label&gt[/ses-&ltsesion-label&gt]
    └── anat/
-       └──sub- &ltparticipant_label&gt[_ses-&ltsesion-label&gt][_acq-&ltlabel&gt]
+       └──sub- &ltparticipant_label&gt[/ses-&ltsesion-label&gt][_acq-&ltlabel&gt]
           [_ac-&ltlabel&gt][_rec-&ltlabel&gt][_run-&ltindex&gt]
           _&ltmodality_label&gt.nii[.gz]
 </code>
@@ -148,9 +150,9 @@ Below is the new directory hierarchy:
 <pre>
 <code>
 Data/
-└──sub-&ltparticipant_label&gt[_ses-&ltsesion-label&gt]
+└──sub-&ltparticipant_label&gt[/ses-&ltsesion-label&gt]
    └── [/mod-&ltmodality_medical_image_label&gt]
-       └──sub- &ltparticipant_label&gt[_ses-&ltsesion-label&gt][_acq-&ltlabel&gt]
+       └──sub- &ltparticipant_label&gt[/ses-&ltsesion-label&gt][_acq-&ltlabel&gt]
           [_ac-&ltlabel&gt][_rec-&ltlabel&gt][_run-&ltindex&gt]
           _&ltdata_type&gt.nii[.gz]
 </code>
@@ -256,10 +258,10 @@ This template maintains the tags used in BIDS and adds filename keys:
 <pre>
 <code>
 Data/
-└──sub-&ltparticipant_label&gt[_ses-&ltsesion-label&gt]
-   └── rm
+└──sub-&ltparticipant_label&gt[/ses-&ltsesion-label&gt]
+   └── mod-rm
        └── anat
-            └──sub- &ltparticipant_label&gt[_ses-&ltsesion-label&gt]
+            └──sub- &ltparticipant_label&gt[/ses-&ltsesion-label&gt]
                 [_acq-&ltlabel&gt][_ac-&ltlabel&gt][_rec-&ltlabel&gt][_run-&ltindex&gt]
                 [_bp-&ltBodyPartExamined_label&gt][_vp-&ltviewPosition_label&gt]
                 _&ltmodality_label&gt.nii[.gz]
@@ -276,9 +278,9 @@ It is the investigators decision to determine whether particular filename keys a
 <pre>
 <code>
 Data/
-└──sub-&ltparticipant_label&gt[_ses-&ltsesion-label&gt]
-   └── &ltmod&gt
-        └──sub- &ltparticipant_label&gt[_ses-&ltsesion-label&gt]
+└──sub-&ltparticipant_label&gt[/ses-&ltsesion-label&gt]
+   └── mod-&ltmodality_medical_image_label&gt[/&ltType_of_image&gt]
+        └──sub- &ltparticipant_label&gt[/ses-&ltsesion-label&gt]
                 [_acq-&ltlabel&gt][_ac-&ltlabel&gt][_rec-&ltlabel&gt][_run-&ltindex&gt]
                 [_bp-&ltBodyPartExamined_label&gt][_vp-&ltviewPosition_label&gt]
                 _&ltmodality_dicom&gt.nii[.gz]
@@ -335,7 +337,7 @@ Data/
 │  │   └── pwi
 │  │   │   ├── sub-control01_ses-01_pwi.nii.gz
 │  │   │   └── sub-control01_ses-01_pwi.json
-│  │   ├── rm
+│  │   ├── mod-rm
 │  │   │   ├── func
 │  │   │   │   ├── sub-01_ses-01_task-nback_bp-heart_vp-fourChamber_bold.nii.gz
 │  │   │   │   ├── sub-01_ses-01_task-nback_bp-heart_vp-fourChamber_bold.json
@@ -343,15 +345,15 @@ Data/
 │  │   │   │   ├── sub-01_ses-01_task-nback_bp-heart_vp-fourChamber_physio.tsv.gz
 │  │   │   │   ├── sub-01_ses-01_task-nback_bp-heart_vp-fourChamber_physio.json
 │  │   │   │   └── sub-01_ses-01_task-nback_bp-heart_vp-fourChamber_sbref.nii.gz
-│  │   ├── rx
+│  │   ├── mod-rx
 │  │   │   ├── Sub-control01_ses-01_bp-chest_vp-ap_dx.nii.gz
 │  │   │   ├── Sub-control01_ses-01_bp-chest_vp-ll_dx.nii.gz
 │  │   │   ├── Sub-control01_ses-01_bp-breast_vp-cc_mg.nii.gz
 │  │   │   └── Sub-control01_ses-01_bp-breast_vp-mlo_mg.nii.gz
-│  │   ├── ct
+│  │   ├── mod-ct
 │  │   │   ¦
 │  │   │   └── ...
-│  │   └── eco
+│  │   └── mod-eco
 │  │   │   ¦
 │  │   │   └── ...
 │  ├── ses-02
@@ -380,7 +382,7 @@ Anatomical (structural) data acquired for a participant. In brain imaging, the m
 
 
 <table class="tg">
-  
+
   <tr>
     <th class="tg-us36">Name</th>
     <th class="tg-c3ow">modality_label</th>
@@ -745,20 +747,20 @@ Table 5:  Classification of the equipment used to acquire the images, according 
 <a id='parti'></a>
 #### 2.4.1. Participants description table (Sub-\<participant_label\>.tsv)
 
+This file is OPTIONAL. The purpose of this file is to describe properties of the participants such as age, handedness, sex, etc. In the case of single session studies, this file has one compulsory column participant_id that consists of sub-<participant_label>, followed by a list of optional columns describing participants. Each participant needs to be described by one and only one row.
+
 <div>
 <pre>
 <code>
 Data/
-├── sub-&ltparticipant_label&gt[_ses-&ltsesion-label&gt]
+├── sub-&ltparticipant_label&gt[/ses-&ltsesion-label&gt]
 ├── sub- ...
 ¦
-└── Participants.tsv
+└── [participants.tsv]
 
 </code>
 </pre>
 </div>
-
-This file is REQUIRED. The purpose of this file is to describe properties of the participants such as age, handedness, sex, etc. In the case of single session studies, this file has one compulsory column participant_id that consists of sub-<participant_label>, followed by a list of optional columns describing participants. Each participant needs to be described by one and only one row.
 
 The columns of the participants description table stored in “participants.tsv” are:
 
@@ -770,7 +772,7 @@ The columns of the participants description table stored in “participants.tsv�
   </tr>
   <tr>
     <td class="tg-b7b8">ID Pseudonymization<br></td>
-    <td class="tg-b7b8">REQUIRED. Unique identifier of a patient's properly pseudonymized data <br></td>
+    <td class="tg-b7b8">OPTIONAL. Unique identifier of a patient's properly pseudonymized data <br></td>
   </tr>
   <tr>
     <td class="tg-yw4l">Health area<br></td>
@@ -803,15 +805,16 @@ Example:
 
 <table class="tg">
   <tr>
-    <th class="tg-us36">Participant<br></th>
-    <th class="tg-us36">ID_</th>
-    <th class="tg-yw4l">Health areas</th>
-    <th class="tg-yw4l">Modality Dicom <br></th>
-    <th class="tg-yw4l">Body parts </th>
+    <th class="tg-us36">participant<br></th>
+    <th class="tg-us36">id_pseudo-
+    anonymization</th>
+    <th class="tg-yw4l">health_areas</th>
+    <th class="tg-yw4l">modality_dicom <br></th>
+    <th class="tg-yw4l">body_parts </th>
   </tr>
   <tr>
     <td class="tg-b7b8">participant_label<br></td>
-    <td class="tg-b7b8">123…</td>
+    <td class="tg-b7b8">123342343…</td>
     <td class="tg-b7b8">ds05</td>
     <td class="tg-b7b8">[MG, MR]<br></td>
     <td class="tg-b7b8">[ [BREAST],[LSSPINE,BRAIN] ]<br></td>
@@ -825,23 +828,24 @@ Example:
   </tr>
 </table>
 <a id='ses'></a>
-#### 2.4.2. Session description table (sub-\<tparticipant_label\>_sessions.tsv)
+#### 2.4.2. Session description table
+
+This file is OPTIONAL as it provides the information referring to all the sessions of the patient, such as age at which the session was performed, procedures, and diagnoses made. Missing values MUST be indicated with “n/a”.
+
 <div>
 <pre>
 <code>
 Data/
 ├── sub-&ltparticipant_label&gt/
-│   ├──[_ses-&ltsesion-label&gt]/
+│   ├──[/ses-&ltsesion-label&gt]/
 ¦   ¦
 ¦   ¦
-│   └──sub-&ltparticipant_label&gt_sessions.tsv
-└── Participants.tsv
+│   └──[sub-&ltparticipant_label&gt.tsv]
+└── [participants.tsv]
 
 </code>
 </pre>
 </div>
-
-This file is RECOMMENDED as it provides the information referring to all the sessions of the patient, such as age at which the session was performed, procedures, and diagnoses made. Missing values MUST be indicated with “n/a”.
 
 The columns of the session description table stored in “sub-\<tparticipant_label\>.tsv” are:
 
@@ -877,11 +881,11 @@ Example:
 
 <table class="tg">
   <tr>
-    <th class="tg-us36">Session<br><br></th>
-    <th class="tg-us36">Age<br></th>
-    <th class="tg-yw4l">ICD version<br></th>
-    <th class="tg-yw4l">All diagnostics<br><br></th>
-    <th class="tg-yw4l">All procedures<br></th>
+    <th class="tg-us36">session<br><br></th>
+    <th class="tg-us36">age<br></th>
+    <th class="tg-yw4l">icd_version<br></th>
+    <th class="tg-yw4l">all_diagnostics<br><br></th>
+    <th class="tg-yw4l">all_procedures<br></th>
   </tr>
   <tr>
     <td class="tg-b7b8">Ses-1</td>
@@ -923,19 +927,19 @@ Example:
 <a id='scans'></a>
 #### 2.4.3. Scans description table(Sub-<participant_label>_scans.tsv)
 
-This file is REQUIRED. In this tsv, all concerned data at the scan can be refilled in this table. One option is complete the table with more relevant DICOM tags for this study. The only required column is an identification that is the relative directory to the image.
+This file is OPTIONAL. In this tsv, all concerned data at the scan can be refilled in this table. One option is complete the table with more relevant DICOM tags for this study. The only required column is an identification that is the relative directory to the image.
 
 <div>
 <pre>
 <code>
 Data/
 ├── sub-&ltparticipant_label&gt/
-│   ├──[_ses-&ltsesion-label&gt]/
+│   ├──[/ses-&ltsesion-label&gt]/
 │   │   ├──[mod/]
 ¦   ¦   ¦
-¦   ¦   └── sub-&ltparticipant_label&gt_scans.tsv
-│   └──sub-&ltparticipant_label&gt.tsv
-└── Participants.tsv
+¦   ¦   └── [sub-&ltparticipant_label&gt_scans.tsv]
+│   └──[sub-&ltparticipant_label&gt.tsv]
+└── [participants.tsv]
 
 </code>
 </pre>
@@ -946,11 +950,11 @@ example:
 
 <table class="tg">
   <tr>
-    <th class="tg-us36">Filename<br></th>
-    <th class="tg-us36">body part slides plane<br><br></th>
-    <th class="tg-us36">ICD Series Description (0008,103E)<br></th>
-    <th class="tg-us36">Patient's Age (0010,1010)<br></th>
-    <th class="tg-us36">Magnetic Field Strength (0018,0087)<br></th>
+    <th class="tg-us36">filename<br></th>
+    <th class="tg-us36">body_part_ slides_plane<br><br></th>
+    <th class="tg-us36">icd_series_ description (0008,103E)<br></th>
+    <th class="tg-us36">patients_age (0010,1010)<br></th>
+    <th class="tg-us36">magnetic_field_ strength (0018,0087)<br></th>
     <th class="tg-n1qb">...</th>
   </tr>
   <tr>
