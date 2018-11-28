@@ -58,6 +58,7 @@ Terminology that will be used in the following includes:
 + <span style="background-color:#bbddff">Patient Position</span> = specifies the position of the patient relative to the imaging equipment space. This attribute is intended for annotational purposes only. It does not provide an exact mathematical relationship between the patient and the imaging equipment,  tag Dicom, Patient Position (0018,5100) ,  See Section [C.7.3.1.1.2](http://dicom.nema.org/medical/dicom/current/output/chtml/part03/sect_C.7.3.html#sect_C.7.3.1.1.2) in DICOM PS3.3 for Defined Terms and further explanation.
 <p><small>
 <span style="background-color:#aaddaa">Background color</span>: This terminology is included with respect to the  BIDS terminilogy.
+<br></br>
 <span style="background-color:#bbddff">Background color</span>: This terminology is new with respect to the  BIDS terminilogy.
 </small></p>
 <a id='mids'></a>
