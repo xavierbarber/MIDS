@@ -1,7 +1,6 @@
 
-<div class="clearfix" style="padding: 10px; padding-left: 0px">
-<a href="http://bimcv.cipf.es/"><img src="./images/logotipo-fisabio_tauv.png" width="500px" style="text-align:center; display: inline-block;">
-<a href="http://ceib.san.gva.es"><img src="./images/logo_CEIB.png" width="320px" class="pull-right" style="display: inline-block; margin-left: 300px;"></a>
+<div class="clearfix" style="padding: 0px; padding-left: 100px; display: flex; flex-wrap: nowrap; justify-content: space-evenly; align-items:center">
+<a href="http://bimcv.cipf.es/"><img src="https://github.com/BIMCV-CSUSP/MIDS/blob/master/images/logotipo-fisabio_tauv.png?raw=true""./images/logotipo-fisabio_tauv.png" width="330px" style="display: inline-block; "></a><a href="http://ceib.san.gva.es"><img src="https://github.com/BIMCV-CSUSP/MIDS/blob/master/images/logo_CEIB.png?raw=true" width="230px" class="pull-right" style="display: inline-block;"></a><a href="http://www.eurobioimaging.eu/"><img src="http://www.eurobioimaging.eu/sites/all/themes/eurobio/images/euro_bio_imaging_logo.jpg" width="280px" class="center-block" style=" display: inline-block;"></a>
 </div>
 <br></br>
 
@@ -83,7 +82,7 @@ One proposal to extend and include BIDS into MIDS is create new variable in name
 # Aplications
 
 ## XNAT2MIDS
-This sorfware allow the user to Download one project into XNAT platform of BIMCV and convert the XNAT directory images in a directory MIDS. The aplication execution need Python --version >= 3.5.
+This sorfware allow the user to Download one project into XNAT platform (--version XNAT <=1.7.4.1) of BIMCV and convert the XNAT directory images in a directory MIDS. The aplication execution need Python --version >= 3.5.
 
 An example of execution is:
 
