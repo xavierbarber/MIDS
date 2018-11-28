@@ -82,7 +82,7 @@ One proposal to extend and include BIDS into MIDS is create new variable in name
 # Aplications
 
 ## XNAT2MIDS
-This sorfware allow the user to Download one project into XNAT platform (--version XNAT <=1.7.4.1) of BIMCV and convert the XNAT directory images in a directory MIDS. The aplication execution need Python --version >= 3.5.
+This sorfware allow the user to Download one project into XNAT platform (--version XNAT <= 1.7.4.1) of BIMCV and convert the XNAT directory images in a directory MIDS. The aplication execution need Python --version >= 3.5.
 
 An example of execution is:
 
