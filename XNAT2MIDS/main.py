@@ -74,11 +74,11 @@ import time
 from collections import defaultdict
 from datetime import datetime
 from calendar import isleap
-
-import lib.Bash_functions.bash_exe as bash
-import lib.IO_Functions.file_class as file_funtions
-import lib.IO_Functions.io_json as io_json
-import lib.IO_Functions.io_objects as io_objects
+sys.path.append(os.path.join(os.path.dirname(__file__), "lib"))
+import Bash_functions.bash_exe as bash
+import IO_Functions.file_class as file_funtions
+import IO_Functions.io_json as io_json
+import IO_Functions.io_objects as io_objects
 import download_from_xnat as dfx
 # # Next step recognize the modality
 # from lib.scan_tagger.scans_tagger_v2 import tagger
