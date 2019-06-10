@@ -1,6 +1,6 @@
 
 <div class="clearfix" style="padding: 0px; padding-left: 100px; display: flex; flex-wrap: nowrap; justify-content: space-evenly; align-items:center">
-<a href="http://bimcv.cipf.es/"><img src="https://github.com/BIMCV-CSUSP/MIDS/blob/master/images/logotipo-fisabio_tauv.png?raw=true""./images/logotipo-fisabio_tauv.png" width="330px" style="display: inline-block; "></a><a href="http://ceib.san.gva.es"><img src="https://github.com/BIMCV-CSUSP/MIDS/blob/master/images/logo_CEIB.png?raw=true" width="230px" class="pull-right" style="display: inline-block;"></a><a href="http://www.eurobioimaging.eu/"><img src="http://www.eurobioimaging.eu/sites/all/themes/eurobio/images/euro_bio_imaging_logo.jpg" width="280px" class="center-block" style=" display: inline-block;"></a>
+<a href="http://bimcv.cipf.es/"><img src="https://github.com/BIMCV-CSUSP/MIDS/blob/master/images/logotipo-fisabio_tauv.png?raw=true""./images/logotipo-fisabio_tauv.png" width="330px" style="display: inline-block; "></a><a href="http://ceib.san.gva.es"><img src="https://github.com/BIMCV-CSUSP/MIDS/blob/master/images/logo_CEIB.png?raw=true" width="230px" class="pull-right" style="display: inline-block;"></a><a href="http://www.eurobioimaging.eu/"><img src="https://github.com/BIMCV-CSUSP/MIDS/blob/master/images/DEEPHEALTH_dark-bkg_horiz_logo.png" width="280px" class="center-block" style=" display: inline-block;"></a>
 </div>
 <br></br>
 
