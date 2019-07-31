@@ -70,6 +70,7 @@ import sys
 import getpass
 import argparse
 import time
+import chardet
 
 from collections import defaultdict
 from datetime import datetime
@@ -351,8 +352,7 @@ def load_dictionary():
     This function allows the user to load dictionary of clasificatión images
     """
     # the path where all data to create dictionary are stored
-    path_dicc = ("/home/josato2/Documentos/CEIB/proyectos"
-                + "/MIDS/XNAT2MIDS/.python_objects/")
+    path_dicc = (".python_objects/")
     # check if the dictionary exists. If exists ...
     if not os.path.exists(path_dicc+"etiquetadoMIDS.dict"):
         # Save the last modification and return the new dictionary
@@ -506,20 +506,26 @@ def create_participants_tsv():
     whit a information of subject
     """
     depth_path_ceib = mids_data_path.depth + 1
+    depth_path_subject = mids_data_path.depth + 2
     for projects in file_funtions.get_dirs(mids_data_path.filepath):
         if depth_path_ceib == projects.depth:
             # department_path = projects.filename
-            csv_file = "participant_id\tage\tgender\n"
+            csv_file = "participant\tid_pseudoanonymization\thealth_areas\tmodality_dicom\tbody_parts\tage\tgender\n"
             print ((projects.filepath))
             for subjects in file_funtions.get_dirs(projects.filepath + os.sep):
-                if "sub-" in subjects.filename:
+                if "sub-" in subjects.filename: # and depth_path_subject == subject.depth:
                     list_age = list([float("inf")])
                     sex = 'U'
+                    id_pseudo=None
+                    health_areas=None
+                    modality_dicom_list=["MR"]
+                    body_parts_list=[["HEAD"]]
                     # accession = ''
                     # print((subjects.filename))
                     for json_files in file_funtions.get_files(
                             subjects.filepath + os.sep):
                         if "json" in json_files.extension:
+                            #print(json_files)
                             # accession = (io_json.get_tag_dicom(
                             #     "(0008,0050)", json_files.filepath)["value"])
                             # print("No hay edad: " + json_files.filepath)
@@ -532,43 +538,64 @@ def create_participants_tsv():
                                 io_json.get_tag_dicom(
                                     "(0008,0020)",
                                     json_files.filepath)["value"])
-                            birtday_list = [int(birtday[0:4]),
-                                            int(birtday[4:6]),
-                                            int(birtday[-2:])]
-                            study_list = [int(study_date[0:4]),
-                                          int(study_date[4:6]),
-                                          int(study_date[-2:])]
-                            start_date = datetime(birtday_list[0],
-                                                  birtday_list[1],
-                                                  birtday_list[2],
-                                                  12,
-                                                  33)
-                            end_date = datetime(study_list[0],
-                                                study_list[1],
-                                                study_list[2],
-                                                12,
-                                                33)
-                            diffyears = end_date.year - start_date.year
-                            difference = (
-                                end_date - start_date.replace(end_date.year)
-                                )
-                            days_in_year = (
-                                366 if isleap(end_date.year) else 365
-                                )
-                            difference_in_years = (
-                                diffyears
-                                + (difference.days
-                                   + difference.seconds / 86400.0)
-                                / days_in_year
-                                )
-                            list_age.append(int(difference_in_years))
+                            try:
+                                birtday_list = [int(birtday[0:4]),
+                                                int(birtday[4:6]),
+                                                int(birtday[-2:])]
+                                study_list = [int(study_date[0:4]),
+                                              int(study_date[4:6]),
+                                              int(study_date[-2:])]
+                                start_date = datetime(birtday_list[0],
+                                                      birtday_list[1],
+                                                      birtday_list[2],
+                                                      12,
+                                                      33)
+                                end_date = datetime(study_list[0],
+                                                    study_list[1],
+                                                    study_list[2],
+                                                    12,
+                                                    33)
+                                diffyears = end_date.year - start_date.year
+                                diffmonths = end_date.month - start_date.month
+                                diffdays = end_date.day - start_date.day
+                                if diffdays < 0: diffmonths -= 1
+                                if diffmonths < 0: diffyears -= 1
+                            except ValueError as e:
+                                try:
+                                    age_str = (io_json.get_tag_dicom(
+                                        "(0010,1010)",
+                                        json_files.filepath)["value"]
+                                    )
+                                    isYorM=age_str[-1]
+                                    if "Y" == isYorM: diffyears=int(age_str[:-2])
+                                    else: diffyears=int(int(age_str[:-2])/12)
+                                except ValueError as e:
+                                    diffyears = -1
+
+                            list_age.append(diffyears)
                             if sex == "U":
                                 sex = (
                                     io_json.get_tag_dicom(
                                         "(0010,0040)",
                                         json_files.filepath)["value"]
                                     )
+                            id_pseudo=(
+                                    io_json.get_tag_dicom(
+                                        "(0010,0010)",
+                                        json_files.filepath)["value"]
+                                    )
+                            health_areas=(
+                                    io_json.get_tag_dicom(
+                                        "(0008,1030)",
+                                        json_files.filepath)["value"]
+                                    )[-4:]
+                    print(type(id_pseudo),health_areas,str(modality_dicom_list),str(body_parts_list),str(min(list_age)),sex)
+                    if id_pseudo==None: continue
                     csv_file += (subjects.filename
+                                 + '\t' + id_pseudo
+                                 + '\t' + health_areas
+                                 + '\t' + str(modality_dicom_list)
+                                 + '\t' + str(body_parts_list)
                                  + '\t' + str(min(list_age))
                                  + '\t' + sex
                                  + '\n')
@@ -576,12 +603,48 @@ def create_participants_tsv():
                       + "participants.tsv", 'w') as csv_input:
                 csv_input.write(csv_file)
 
+def create_sessions_tsv():
+    depth_path_subject = xnat_data_path.depth + 2
+    header_tsv="session\tmedical_evaluation"
+    for subjects in file_funtions.get_dirs(xnat_data_path.filepath):
+        if depth_path_subject == subjects.depth and "_S" in subjects.filename:
+            print(subjects.filepath)
+            department = subjects.filepath.split("/")[6]
+            print(subjects.filepath.split("/")[7])
+            subject = "sub-" + subjects.filepath.split("/")[7].split("_")[1]
+            path_mids = os.path.join(mids_data_path.filepath, department, subject)
+            path_mids_deriv = os.path.join(
+                mids_data_path.filepath, "derivatives", department, subject
+                )
+            print(path_mids)
+            print(path_mids_deriv)
+            corpus=""
+            for resource in file_funtions.get_files(subjects.filepath):
+                if ".txt" in resource.filepath:
+                    session = "ses-" + resource.filepath.split("/")[8].split("_")[1]
+                    print(resource.filepath)
+                    #/mnt/cabinaData/openmind/xnat_download_10k/all_2/10kdscv15_2016/ceibcs03_S11343/ceibcs03_E11396/resources/sr/files/sr_ea4632391e_for_184830671267436751733081759737723892659.txt
+
+                    encoding = chardet.detect(open(resource.filepath, "rb").read())['encoding']
+                    f = open(resource.filepath, "r",encoding=encoding)
+                    eval=f.read().replace("\t", "    ")
+                    f.close()
+                    corpus += "\t".join([session,eval]) + "\n"
+            if corpus:
+                if os.path.exists(path_mids):
+                    f = open(os.path.join(path_mids,subject + "_sessions.tsv"), "w")
+                else:
+                    os.makedirs(path_mids_deriv, exist_ok=True)
+                    f = open(os.path.join(path_mids_deriv,subject + "_sessions.tsv"), "w")
+                f.write(header_tsv + "\n" + corpus)
+                f.close()
+
 
 def create_scans_tsv():
     for sessions in file_funtions.get_dirs(mids_data_path.filepath):
         if "ses-" in sessions.filename:
-            tags_list = [
-                "(0008,0070)", "(0008,103E)", "(0008,1090)", "(0010,0020)",
+            tags_list = ["(0010,0020)",
+                "(0008,0070)", "(0008,103E)", "(0008,1090)",
                 "(0010,0040)", "(0010,1010)", "(0010,1030)", "(0018,0020)",
                 "(0018,0021)", "(0018,0022)", "(0018,0023)", "(0018,0050)",
                 "(0018,0080)", "(0018,0081)", "(0018,0082)", "(0018,0084)",
@@ -591,12 +654,12 @@ def create_scans_tsv():
                 "(0028,0010)", "(0028,0011)", "(0028,0030)", "(0028,0100)",
                 "(0018,0083)", "(0018,0086)", "(0018,9461)"
                 ]
-            tsv_cab_list = ["filename"] + tags_list
+            tsv_cab_list = ["filename", "session_id_pseudo"] + tags_list[1:]
             tsv = ""
             subject = sessions.filepath.split(os.sep)[-2]
             session = sessions.filename
             for dicom in file_funtions.get_files(sessions.filepath):
-                if ".json" in dicom.filename + dicom.extension:
+                if ".json" == dicom.extension:
                     print(dicom.filepath)
                     # accession = (
                     #     io_json.get_tag_dicom("(0008,0050)",
@@ -614,15 +677,15 @@ def create_scans_tsv():
                         if io_json.get_tag_dicom(
                                 tag, dicom.filepath):
                             if (tsv_cab_list[tag_iter + 1]
-                                    == tags_list[tag_iter]):
+                                    == tags_list[tag_iter]) and tag_iter !=0:
                                 tsv_cab_list[tag_iter + 1] = (
                                     io_json.get_tag_dicom(
                                         tag,
-                                        dicom.filepath)["desc"]
+                                        dicom.filepath)["desc"].replace("&rsquo;","'")
                                     + ' ' + tag)
                             tsv_list[tag_iter] = (
                                 io_json.get_tag_dicom(tag,
-                                                      dicom.filepath)["value"]
+                                                      dicom.filepath)["value"].replace("&rsquo;","'")
                                 )
                         else:
                             tsv_list[tag_iter] = None
@@ -749,11 +812,14 @@ there are 2 funtions in this code:
         # #print(len(dictionary_scans.items()))
         # #for i in dictionary_scans.items():
         # #    print(i)
-        create_directorio_MIDS()
+        #create_directorio_MIDS()
         print("participats tsv are generating...")
-        create_participants_tsv()
+        #create_participants_tsv()
         print("scan tsv are generating...")
-        create_scans_tsv()
+        #create_scans_tsv()
+        print("session tsv are generating...")
+        create_sessions_tsv()
+
 
 
 

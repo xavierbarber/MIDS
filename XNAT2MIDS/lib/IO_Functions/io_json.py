@@ -35,9 +35,9 @@ Return a dict of the tag dicom
 
 def get_tag_dicom(tag, json_file_path):
     json_file = load_json(json_file_path)
-    for i in range(len(json_file["ResultSet"]["Result"])):
-        if json_file["ResultSet"]["Result"][i]["tag1"] == tag:
-            return json_file["ResultSet"]["Result"][i]
+    for i in range(len(json_file)):
+        if json_file[i]["tag1"] == tag:
+            return json_file[i]
     else:
         return None
 
