@@ -1,0 +1,16 @@
+﻿1.0.2 2019-11-03
+  - Derivatives of the fsl BiasField preprocessing are included.
+1.0.2 2019-11-03
+  - Derivatives of Ants Registration preprocessing are included.
+1.0.2 2019-11-03
+  - update to version "0.1.0-alpha" of BIDS 
+1.0.1 2018-05-03
+  - DICOM information.
+1.0.0 2016-05-26
+  - Initial release.
+
+AUTHOR
+  - Jhon Jairo Sáenz Gamboa <jsaenz@cipf.es>
+  - CEIB-CSUSP <cloud.ceib.cs.adm@gmail.com>
+
+COPYRIGHT AND LICENSE

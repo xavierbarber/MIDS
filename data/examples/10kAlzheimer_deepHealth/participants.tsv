@@ -1,0 +1,5 @@
+participant	id_pseudoanonymization	health_areas	modality_dicom	body_parts	age	gender
+sub-S01668	234572256296699329441400016479318001668	10kAlzheimer	['CT','PT']	[['HEAD'],['HEAD']]	63	F
+sub-S08556	293341699218747638936583406100686508556	10kAlzheimer	['CT','PT']	[['HEAD'],['HEAD']]	81	M
+sub-S19710	175730419779145321868525891823042019710	10kAlzheimer	['CT','PT']	[['HEAD'],['HEAD']]	74	M
+sub-S13263	226049582586849057519298480593290013263	10kalzheimer	['CT','PT']	[['HEAD'],['HEAD']]	69	F
